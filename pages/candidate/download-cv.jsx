@@ -1,0 +1,5 @@
+
+export { DownloadCvPage as default } from '../../components/candidate-pages';
+export async function getServerSideProps() {
+  return { props: {} };
+}
