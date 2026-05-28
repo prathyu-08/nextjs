@@ -6,7 +6,19 @@ export default function Modal({ title, children, open, onClose, onSubmit }) {
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/70 px-4 py-6 backdrop-blur-sm"
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            background: "rgba(15,23,42,0.7)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 9999,
+            padding: "24px",
+          }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -15,7 +27,16 @@ export default function Modal({ title, children, open, onClose, onSubmit }) {
           <motion.form
             onSubmit={onSubmit}
             onMouseDown={(event) => event.stopPropagation()}
-            className="max-h-[92vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white shadow-2xl dark:bg-slate-900"
+            style={{
+              background: "#fff",
+              width: "100%",
+              maxWidth: "1000px",
+              maxHeight: "92vh",
+              overflowY: "auto",
+              borderRadius: "16px",
+              boxShadow: "0 25px 50px rgba(0,0,0,0.25)",
+              padding: "32px",
+            }}
             initial={{ opacity: 0, y: 24, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 18, scale: 0.98 }}

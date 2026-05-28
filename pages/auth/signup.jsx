@@ -55,28 +55,35 @@ export default function SignupPage() {
             password: formData.password,
             confirm_password: formData.confirm_password,
             first_name: formData.first_name.trim(),
+            agree_to_terms: true,
             last_name: formData.last_name.trim(),
             ...(formData.phone_number.trim() && { phone_number: formData.phone_number.trim() }),
             ...(formData.desired_role && { desired_role: formData.desired_role }),
           }
         : {
-            role: type,
-            email: formData.email.trim(),
-            password: formData.password,
-            confirm_password: formData.confirm_password,
-            company_name: formData.company_name.trim(),
-            designation: formData.designation.trim(),
-            ...(formData.website.trim() && { website: formData.website.trim() }),
-          };
+          role: type,
+          work_email: formData.email.trim(),
+          password: formData.password,
+          confirm_password: formData.confirm_password,
+          company_name: formData.company_name.trim(),
+          agree_to_terms: true,
+          ...(formData.website.trim() && { website: formData.website.trim() }),
+        };
 
       await api.authApi.signup(payload);
       setError("");
       // Store email for OTP verification
       sessionStorage.setItem("pendingEmail", formData.email);
-      router.push("/auth/verify-otp");
+      router.push("/auth/login");
     } catch (err) {
-      setError(err.response?.data?.detail || "Registration failed. Please try again.");
-    } finally {
+    const detail = err.response?.data?.detail;
+
+    if (Array.isArray(detail)) {
+      setError(detail[0]?.msg || "Validation error");
+    } else {
+      setError(detail || "Registration failed. Please try again.");
+    }
+}finally {
       setLoading(false);
     }
   };

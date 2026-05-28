@@ -1,9 +1,32 @@
 export function Field({ label, error, children }) {
   return (
-    <label className="block">
-      <span className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">{label}</span>
+    <label style={{ display: "block", width: "100%" }}>
+      <span
+        style={{
+          display: "block",
+          marginBottom: "8px",
+          fontSize: "14px",
+          fontWeight: "600",
+          color: "#334155",
+        }}
+      >
+        {label}
+      </span>
+
       {children}
-      {error && <span className="mt-1 block text-xs font-medium text-red-600">{error}</span>}
+
+      {error && (
+        <span
+          style={{
+            display: "block",
+            marginTop: "6px",
+            fontSize: "12px",
+            color: "#dc2626",
+          }}
+        >
+          {error}
+        </span>
+      )}
     </label>
   );
 }
@@ -12,7 +35,17 @@ export function TextInput(props) {
   return (
     <input
       {...props}
-      className="h-10 w-full rounded-lg border border-slate-300 bg-white px-3 text-sm text-slate-900 outline-none transition-colors placeholder:text-slate-400 focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-slate-600 dark:bg-slate-800 dark:text-white dark:focus:border-primary-dark"
+      style={{
+        height: "42px",
+        width: "100%",
+        borderRadius: "10px",
+        border: "1px solid #cbd5e1",
+        background: "#fff",
+        padding: "0 12px",
+        fontSize: "14px",
+        color: "#0f172a",
+        outline: "none",
+      }}
     />
   );
 }
@@ -21,7 +54,17 @@ export function TextArea(props) {
   return (
     <textarea
       {...props}
-      className="min-h-[120px] w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition-colors placeholder:text-slate-400 focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-slate-600 dark:bg-slate-800 dark:text-white dark:focus:border-primary-dark"
+      style={{
+        minHeight: "120px",
+        width: "100%",
+        borderRadius: "10px",
+        border: "1px solid #cbd5e1",
+        background: "#fff",
+        padding: "12px",
+        fontSize: "14px",
+        color: "#0f172a",
+        outline: "none",
+      }}
     />
   );
 }
@@ -30,7 +73,17 @@ export function SelectInput({ children, ...props }) {
   return (
     <select
       {...props}
-      className="h-10 w-full rounded-lg border border-slate-300 bg-white px-3 text-sm text-slate-900 outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-slate-600 dark:bg-slate-800 dark:text-white dark:focus:border-primary-dark"
+      style={{
+        height: "42px",
+        width: "100%",
+        borderRadius: "10px",
+        border: "1px solid #cbd5e1",
+        background: "#fff",
+        padding: "0 12px",
+        fontSize: "14px",
+        color: "#0f172a",
+        outline: "none",
+      }}
     >
       {children}
     </select>
@@ -41,8 +94,17 @@ export function SubmitButton({ children, ...props }) {
   return (
     <button
       type="submit"
-      className="inline-flex items-center justify-center rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
       {...props}
+      style={{
+        border: "none",
+        borderRadius: "10px",
+        background: "#2563eb",
+        padding: "10px 20px",
+        fontSize: "14px",
+        fontWeight: "600",
+        color: "#fff",
+        cursor: "pointer",
+      }}
     >
       {children}
     </button>
@@ -53,8 +115,17 @@ export function CancelButton({ children, ...props }) {
   return (
     <button
       type="button"
-      className="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
       {...props}
+      style={{
+        border: "1px solid #cbd5e1",
+        borderRadius: "10px",
+        background: "#fff",
+        padding: "10px 20px",
+        fontSize: "14px",
+        fontWeight: "600",
+        color: "#334155",
+        cursor: "pointer",
+      }}
     >
       {children}
     </button>

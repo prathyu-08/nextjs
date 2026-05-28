@@ -122,7 +122,13 @@ export default function EntryModal({ type, editingItem, open, onClose, onSave })
 
   return (
     <Modal open={open} onClose={onClose} onSubmit={submit} title={editingItem ? config.editTitle : config.title}>
-      <div className={`grid gap-4 ${isTableType ? "sm:grid-cols-2" : "sm:grid-cols-2"}`}>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "16px",
+        }}
+      >
         {config.fields.map(([field, label, kind, options]) => {
           const disabled = field === "endDate" && form.currentlyWorking;
           return (

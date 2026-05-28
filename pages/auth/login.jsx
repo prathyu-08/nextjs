@@ -2,7 +2,6 @@ import { useRouter } from 'next/router';
 import { useState, useEffect } from "react";
 import api from "../../lib/api";
 
-
 export default function LoginPage() {
   const router = useRouter();
   const [formData, setFormData] = useState({
@@ -14,7 +13,6 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // Clear any existing values on mount
     setFormData({ email: "", password: "", remember: false });
   }, []);
 
@@ -33,22 +31,16 @@ export default function LoginPage() {
 
     try {
       const response = await api.authApi.login(formData);
-      
       console.log("Login response:", response);
-      
-      // Store tokens and user info in localStorage
       localStorage.setItem("token", response.id_token);
       localStorage.setItem("refreshToken", response.refresh_token);
       localStorage.setItem("user", JSON.stringify({
         id: response.user_id,
-        email: response.email || formData.email, // Use response email, fallback to form email
+        email: response.email || formData.email,
         role: response.role,
         recruiter_id: response.recruiter_id,
       }));
-
       console.log("Stored user:", JSON.parse(localStorage.getItem("user")));
-
-      // Redirect based on role
       if (response.role === "recruiter") {
         router.push("/employer/dashboard");
       } else {
@@ -60,6 +52,7 @@ export default function LoginPage() {
       setLoading(false);
     }
   };
+
   return (
     <div style={{ display:"flex",minHeight:"100vh",fontFamily:"Inter,sans-serif" }}>
       <div style={{ flex:1,background:"linear-gradient(135deg,#1e3a8a,#1d4ed8)",color:"#fff",padding:"60px 48px",display:"flex",flexDirection:"column",justifyContent:"center" }}>
@@ -75,8 +68,8 @@ export default function LoginPage() {
           ))}
         </ul>
       </div>
-        <div style={{ flex:1,display:"flex",alignItems:"center",justifyContent:"center",padding:48,background:"#fff" }}>
-         <div style={{ width:"100%",maxWidth:420 }}>
+      <div style={{ flex:1,display:"flex",alignItems:"center",justifyContent:"center",padding:48,background:"#fff" }}>
+        <div style={{ width:"100%",maxWidth:420 }}>
           <h2 style={{ fontSize:28,fontWeight:700,color:"#1f2937",marginBottom:8 }}>Sign in to your account</h2>
           <p style={{ color:"#6b7280",fontSize:14,marginBottom:28 }}>Enter your details below or continue with a social account.</p>
           <div style={{ display:"flex",gap:12,marginBottom:24 }}>
@@ -90,15 +83,16 @@ export default function LoginPage() {
             <div style={{ flex:1,height:1,background:"#e5e7eb" }}/><span style={{ fontSize:13,color:"#9ca3af" }}>OR</span><div style={{ flex:1,height:1,background:"#e5e7eb" }}/>
           </div>
           <form onSubmit={handleSubmit} autoComplete="off">
-            {/* Honeypot fields to prevent autofill */}
             <input type="text" name="fakeusername" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
             <input type="password" name="fakepassword" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
-            
             <label style={{ display:"block",fontSize:14,fontWeight:500,color:"#374151",marginBottom:6 }}>Email address</label>
             <input name="email" type="email" autoComplete="off" value={formData.email} onChange={handleChange} placeholder="name@email.com" style={{ width:"100%",padding:"12px 16px",border:"1px solid #e5e7eb",borderRadius:10,fontSize:14,marginBottom:16,boxSizing:"border-box",outline:"none" }}/>
             <div style={{ display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:6 }}>
               <label style={{ fontSize:14,fontWeight:500,color:"#374151" }}>Password</label>
-              <a href="/forgot-password" style={{ fontSize:13,color:"#2563eb",textDecoration:"none" }}>Forgot password?</a>
+              <div style={{ display:"flex",gap:12 }}>
+                <a href="/auth/forgot-username" style={{ fontSize:13,color:"#6b7280",textDecoration:"none" }}>Forgot username?</a>
+                <a href="/forgot-password" style={{ fontSize:13,color:"#2563eb",textDecoration:"none" }}>Forgot password?</a>
+              </div>
             </div>
             <input name="password" type="password" autoComplete="new-password" value={formData.password} onChange={handleChange} placeholder="••••••••" style={{ width:"100%",padding:"12px 16px",border:"1px solid #e5e7eb",borderRadius:10,fontSize:14,marginBottom:8,boxSizing:"border-box",outline:"none" }}/>
             {error && <p style={{ color: "#ef4444", fontSize: 13, marginBottom: 16 }}>{error}</p>}
@@ -115,6 +109,7 @@ export default function LoginPage() {
     </div>
   );
 }
+
 export async function getServerSideProps() {
   return { props: {} };
 }

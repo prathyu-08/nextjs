@@ -3,7 +3,13 @@ import { useRouter } from 'next/router';
 import Navbar from '../components/shared/Navbar';
 import Footer from '../components/shared/Footer';
 
-const AUTH_PATHS = ['/auth/login', '/auth/signup', '/auth/verify-otp'];
+const AUTH_PATHS = [
+  '/auth/login',
+  '/auth/signup',
+  '/auth/verify-otp',
+  '/auth/forgot-username',
+  '/auth/forgot-password'
+];
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
