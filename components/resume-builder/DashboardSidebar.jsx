@@ -1,5 +1,6 @@
-import { 
-  LayoutDashboard, 
+'use client';
+import {
+  LayoutDashboard,
   UserPen, 
   IdCard, 
   Download, 

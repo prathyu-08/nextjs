@@ -1,3 +1,4 @@
+'use client';
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 const STORAGE_KEY = "resume-builder-draft";

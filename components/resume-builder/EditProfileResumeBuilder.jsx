@@ -1,3 +1,4 @@
+'use client';
 import { motion } from "framer-motion";
 import { Download, Eye, Wand2, X } from "lucide-react";
 import { ResumeBuilderProvider, useResumeBuilder } from "./ResumeBuilderContext";
@@ -5,7 +6,7 @@ import ResumePreview from "./ResumePreview";
 import EntryModal from "./EntryModal";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
-import CandidateSidebar from "../shared/CandidateSidebar";
+import CandidateSidebar from "../layout/sidebars/CandidateSidebar";
 
 function BuilderInner() {
   const {
