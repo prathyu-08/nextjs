@@ -1,0 +1,329 @@
+/* Hero */
+.hero {
+  background: linear-gradient(120deg, #dbeafe, #e0e7ff, #dcfce7);
+  padding: 60px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+.heroInner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+}
+.eyebrow {
+  display: inline-block;
+  padding: 6px 16px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+.heroTitle {
+  font-size: 42px;
+  font-weight: 800;
+  color: #1f2937;
+  margin: 0 0 12px;
+  line-height: 1.2;
+}
+.heroDesc {
+  font-size: 16px;
+  color: #6b7280;
+  margin-bottom: 28px;
+}
+
+/* Search panel */
+.searchPanel {
+  background: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+.searchGrid {
+  display: grid;
+  grid-template-columns: 5fr 3fr 3fr 1fr;
+  gap: 12px;
+}
+.searchField {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 0 14px;
+  height: 50px;
+}
+.searchIcon {
+  color: var(--color-primary);
+}
+.searchInput {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 13px;
+  flex: 1;
+}
+.searchBtn {
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  height: 50px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* Listing layout */
+.listingSection {
+  background: #f9fafb;
+  padding: 40px 0;
+}
+.listingInner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.listingGrid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 24px;
+}
+
+/* Sidebar filters */
+.filterCard {
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.filterTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 14px;
+}
+.filterInput {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 13px;
+  box-sizing: border-box;
+  outline: none;
+}
+.applyBtn {
+  width: 100%;
+  padding: 10px;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.filterList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.filterListItem {
+  margin-bottom: 10px;
+}
+.filterLabel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  color: #4b5563;
+  font-size: 14px;
+}
+.filterCheckbox {
+  margin-right: 10px;
+}
+.filterCount {
+  font-size: 11px;
+  color: #9ca3af;
+  background: #f3f4f6;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+/* Results header */
+.resultsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.resultsTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 4px;
+}
+.resultsSub {
+  font-size: 14px;
+  color: #6b7280;
+}
+.resultsControls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.viewToggle {
+  display: flex;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.viewToggleBtn {
+  padding: 10px 14px;
+  border: none;
+  background: #fff;
+  color: #6b7280;
+  cursor: pointer;
+  font-size: 14px;
+}
+.viewToggleBtnActive {
+  background: var(--color-primary);
+  color: #fff;
+}
+.sortSelect {
+  padding: 10px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+}
+
+/* Employer cards */
+.employerList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.empCard {
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  padding: 24px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  transition: box-shadow 0.3s;
+}
+.empCard:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+.logoBox {
+  width: 72px;
+  height: 72px;
+  border-radius: 12px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.logoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.empMain {
+  flex: 1;
+}
+.empMainHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+.verifiedBadge {
+  font-size: 11px;
+  font-weight: 600;
+  color: #16a34a;
+  background: #dcfce7;
+  padding: 3px 8px;
+  border-radius: 20px;
+  margin-bottom: 6px;
+  display: inline-block;
+}
+.empName {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 4px 0;
+}
+.empNameLink {
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+.empMeta {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0;
+}
+.followBtn {
+  padding: 8px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 12px;
+}
+.empDesc {
+  font-size: 14px;
+  color: #4b5563;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+.tagRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tag {
+  padding: 4px 12px;
+  background: #f3f4f6;
+  border-radius: 20px;
+  font-size: 12px;
+  color: #4b5563;
+}
+.empSide {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-end;
+  min-width: 160px;
+}
+.empSideInfo {
+  font-size: 13px;
+  color: #6b7280;
+  text-align: right;
+}
+.empSideInfoIcon {
+  margin-right: 6px;
+  color: var(--color-primary);
+}
+.empSideRow2 {
+  margin-top: 6px;
+}
+.viewBtn {
+  padding: 10px 20px;
+  border: 1px solid #17d27c;
+  color: #17d27c;
+  background: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}

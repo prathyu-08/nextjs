@@ -4,6 +4,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useMemo, useState } from "react";
 import { KeyRound } from "lucide-react";
 import api from "../../../lib/api";
+import styles from "./page.module.css";
 
 const passwordRules = [
   { label: "8 to 25 characters", test: (value) => value.length >= 8 && value.length <= 25 },
@@ -84,18 +85,18 @@ function ResetPasswordInner() {
   };
 
   return (
-    <main style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: 24, background: "#f8fafc", fontFamily: "Inter, sans-serif" }}>
-      <section style={{ width: "100%", maxWidth: 480, background: "#fff", border: "1px solid #e2e8f0", borderRadius: 8, padding: 34, boxShadow: "0 20px 45px rgba(15, 23, 42, 0.08)" }}>
-        <div style={{ width: 44, height: 44, borderRadius: 8, background: "#dbeafe", color: "#2563eb", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 22 }}>
+    <main className="center-page">
+      <section className={styles.card}>
+        <div className={styles.iconWrap}>
           <KeyRound size={22} />
         </div>
-        <h1 style={{ fontSize: 28, fontWeight: 850, color: "#0f172a", marginBottom: 8 }}>Set a new password</h1>
-        <p style={{ color: "#64748b", fontSize: 14, lineHeight: 1.6, marginBottom: 26 }}>
+        <h1 className={styles.heading}>Set a new password</h1>
+        <p className={styles.subtitle}>
           Use the reset code from your email and choose a strong password for your account.
         </p>
 
         <form onSubmit={handleSubmit}>
-          <label htmlFor="email" style={{ display: "block", fontSize: 14, fontWeight: 650, color: "#334155", marginBottom: 7 }}>
+          <label htmlFor="email" className={styles.label}>
             Email address
           </label>
           <input
@@ -104,10 +105,10 @@ function ResetPasswordInner() {
             value={email}
             onChange={(event) => setEmail(event.target.value)}
             placeholder="name@email.com"
-            style={{ width: "100%", padding: "13px 15px", border: "1px solid #cbd5e1", borderRadius: 8, fontSize: 14, outline: "none", marginBottom: 14 }}
+            className={styles.input}
           />
 
-          <label htmlFor="code" style={{ display: "block", fontSize: 14, fontWeight: 650, color: "#334155", marginBottom: 7 }}>
+          <label htmlFor="code" className={styles.label}>
             Reset code
           </label>
           <input
@@ -116,10 +117,10 @@ function ResetPasswordInner() {
             value={code}
             onChange={(event) => setCode(event.target.value.trim())}
             placeholder="Enter code from email"
-            style={{ width: "100%", padding: "13px 15px", border: "1px solid #cbd5e1", borderRadius: 8, fontSize: 14, outline: "none", marginBottom: 14 }}
+            className={styles.input}
           />
 
-          <label htmlFor="password" style={{ display: "block", fontSize: 14, fontWeight: 650, color: "#334155", marginBottom: 7 }}>
+          <label htmlFor="password" className={styles.label}>
             New password
           </label>
           <input
@@ -129,21 +130,21 @@ function ResetPasswordInner() {
             value={password}
             onChange={(event) => setPassword(event.target.value)}
             placeholder="Create a strong password"
-            style={{ width: "100%", padding: "13px 15px", border: "1px solid #cbd5e1", borderRadius: 8, fontSize: 14, outline: "none", marginBottom: 10 }}
+            className={styles.inputTight}
           />
 
-          <div style={{ display: "grid", gap: 6, marginBottom: 16 }}>
+          <div className={styles.rulesList}>
             {passwordRules.map((rule) => {
               const passed = rule.test(password);
               return (
-                <span key={rule.label} style={{ color: passed ? "#047857" : "#64748b", fontSize: 12 }}>
+                <span key={rule.label} className={`${styles.ruleItem} ${passed ? styles.rulePassed : ""}`}>
                   {passed ? "OK" : "-"} {rule.label}
                 </span>
               );
             })}
           </div>
 
-          <label htmlFor="confirmPassword" style={{ display: "block", fontSize: 14, fontWeight: 650, color: "#334155", marginBottom: 7 }}>
+          <label htmlFor="confirmPassword" className={styles.label}>
             Confirm new password
           </label>
           <input
@@ -153,24 +154,24 @@ function ResetPasswordInner() {
             value={confirmPassword}
             onChange={(event) => setConfirmPassword(event.target.value)}
             placeholder="Repeat new password"
-            style={{ width: "100%", padding: "13px 15px", border: "1px solid #cbd5e1", borderRadius: 8, fontSize: 14, outline: "none", marginBottom: 14 }}
+            className={styles.input}
           />
 
-          {error && <p style={{ color: "#dc2626", fontSize: 13, lineHeight: 1.5, marginBottom: 14 }}>{error}</p>}
-          {message && <p style={{ color: "#047857", fontSize: 13, lineHeight: 1.5, marginBottom: 14 }}>{message}</p>}
+          {error && <p className={styles.errorText}>{error}</p>}
+          {message && <p className={styles.messageText}>{message}</p>}
 
           <button
             type="submit"
             disabled={loading}
-            style={{ width: "100%", padding: "14px 16px", border: "none", borderRadius: 8, background: "#2563eb", color: "#fff", fontSize: 15, fontWeight: 800, cursor: loading ? "not-allowed" : "pointer", opacity: loading ? 0.7 : 1 }}
+            className={styles.submitBtn}
           >
             {loading ? "Resetting password..." : "Reset password"}
           </button>
         </form>
 
-        <p style={{ textAlign: "center", marginTop: 22, color: "#64748b", fontSize: 14 }}>
+        <p className={styles.footerText}>
           Need a new code?{" "}
-          <Link href="/forgot-password" style={{ color: "#2563eb", fontWeight: 700 }}>
+          <Link href="/forgot-password" className={styles.footerLink}>
             Start again
           </Link>
         </p>

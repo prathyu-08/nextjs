@@ -1,0 +1,192 @@
+/* Brand panel */
+.brandHeading {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+.brandLead {
+  opacity: 0.85;
+  line-height: 1.7;
+  margin-bottom: 32px;
+  max-width: 400px;
+}
+.brandList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.brandListItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+}
+.brandCheck {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+}
+
+/* Form panel - signup wraps form in a scrollable gray panel with white card */
+.formPanel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  background: #f9fafb;
+  overflow-y: auto;
+}
+.formCard {
+  width: 100%;
+  max-width: 480px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 36px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+.formHeading {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 6px;
+}
+.formSubtitle {
+  color: #6b7280;
+  font-size: 13px;
+  margin-bottom: 24px;
+}
+.socialRow {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.socialBtn {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+}
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.dividerLine {
+  flex: 1;
+  height: 1px;
+  background: #e5e7eb;
+}
+.dividerText {
+  font-size: 12px;
+  color: #9ca3af;
+}
+.typeToggle {
+  display: flex;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.typeBtn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  background: #fff;
+  color: #374151;
+  text-transform: capitalize;
+}
+.typeBtnActive {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* Form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.hidden {
+  display: none;
+}
+.fieldGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.fieldLabel {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 4px;
+}
+.fieldInput {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 13px;
+  box-sizing: border-box;
+  outline: none;
+}
+.termsLabel {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #374151;
+}
+.errorText {
+  color: #ef4444;
+  font-size: 13px;
+  margin: 0;
+}
+.submitBtn {
+  width: 100%;
+  padding: 12px;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+.footerText {
+  text-align: center;
+  font-size: 13px;
+  color: #6b7280;
+  margin-top: 16px;
+  margin-bottom: 0;
+}
+.footerLink {
+  color: var(--color-primary);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}

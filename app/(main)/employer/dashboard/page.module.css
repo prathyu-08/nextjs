@@ -1,0 +1,464 @@
+/* Page layout */
+.page {
+  background: #f7f9fc;
+  min-height: 100vh;
+  padding: 40px 0 60px;
+}
+.layout {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+.main {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 4px;
+}
+.subtitle {
+  color: #6b7280;
+  font-size: 15px;
+  margin: 0;
+}
+.postBtn {
+  padding: 12px 24px;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+}
+.postBtnIcon {
+  margin-right: 6px;
+}
+
+/* Status badge */
+.statusBadge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* Stats */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.statCard {
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.statIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+.statLabel {
+  font-size: 13px;
+  color: #6b7280;
+  display: block;
+  margin-bottom: 4px;
+}
+.statValue {
+  font-size: 28px;
+  font-weight: 700;
+}
+.statTrend {
+  font-size: 12px;
+  color: #16a34a;
+  font-weight: 600;
+}
+
+/* Middle row */
+.middleRow {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+.card {
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  padding: 24px;
+}
+.cardSpaced {
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.cardTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+}
+.cardTitleSm {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 16px;
+}
+.viewAllLink {
+  font-size: 14px;
+  color: var(--color-primary);
+  text-decoration: none;
+  cursor: pointer;
+}
+.viewAllLinkSm {
+  font-size: 13px;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+/* Applications list */
+.appList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.appRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+.appRowLast {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+}
+.appAvatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.appInfo {
+  flex: 1;
+}
+.appName {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f2937;
+}
+.appPosition {
+  font-size: 13px;
+  color: #6b7280;
+}
+.appDate {
+  font-size: 12px;
+  color: #9ca3af;
+}
+.iconBtnRow {
+  display: flex;
+  gap: 6px;
+}
+.iconBtn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Package card */
+.packageBadge {
+  font-size: 11px;
+  font-weight: 700;
+  color: #d97706;
+  background: #fef3c7;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+.packageHero {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 12px;
+  padding: 20px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+.packageEmoji {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+.packageTitle {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+.packagePrice {
+  font-size: 14px;
+  opacity: 0.9;
+  margin: 0;
+}
+.packageMeter {
+  margin-bottom: 16px;
+}
+.packageMeterLabel {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 6px;
+}
+.packageMeterPct {
+  font-weight: 600;
+  color: #1f2937;
+}
+.packageMeterTrack {
+  height: 8px;
+  background: #f3f4f6;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.packageMeterFill {
+  height: 100%;
+  border-radius: 8px;
+}
+.packageExpiry {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 16px;
+}
+.upgradeBtn {
+  width: 100%;
+  padding: 12px;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Active jobs table */
+.tableScroll {
+  overflow-x: auto;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.theadRow {
+  background: #f9fafb;
+}
+.th {
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #e5e7eb;
+}
+.tbodyRow {
+  border-bottom: 1px solid #f3f4f6;
+}
+.td {
+  padding: 16px;
+}
+.jobTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+}
+.jobType {
+  font-size: 12px;
+  color: #6b7280;
+}
+.cell {
+  font-size: 14px;
+  color: #374151;
+}
+.cellMuted {
+  font-size: 13px;
+  color: #6b7280;
+}
+.actionBtn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+  color: #6b7280;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+}
+.actionBtnDanger {
+  color: #dc2626;
+}
+
+/* Bottom section */
+.bottomGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+}
+.message {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding: 12px;
+  border-radius: 10px;
+}
+.messageUnread {
+  background: #eff6ff;
+}
+.messageAvatarWrap {
+  position: relative;
+}
+.messageAvatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.onlineDot {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  background: #22c55e;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+.messageBody {
+  flex: 1;
+}
+.messageMeta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+.messageSender {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1f2937;
+}
+.messageTime {
+  font-size: 11px;
+  color: #9ca3af;
+}
+.messagePreview {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Quick actions */
+.quickGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.quickItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+  background: #f9fafb;
+}
+.quickItem:hover {
+  background: #eff6ff;
+  border-color: var(--color-primary);
+}
+.quickIcon {
+  font-size: 20px;
+  color: var(--color-primary);
+}
+.quickLabel {
+  font-size: 12px;
+  font-weight: 500;
+  color: #374151;
+  text-align: center;
+}
+
+/* Activity */
+.activityItem {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.activityIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #eff6ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-primary);
+  font-size: 14px;
+}
+.activityDesc {
+  font-size: 13px;
+  color: #374151;
+  margin: 0 0 3px;
+  line-height: 1.4;
+}
+.activityTime {
+  font-size: 11px;
+  color: #9ca3af;
+}

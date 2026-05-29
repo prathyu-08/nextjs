@@ -1,0 +1,179 @@
+/* Brand panel */
+.brandHeading {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+.brandLead {
+  opacity: 0.8;
+  line-height: 1.7;
+  margin-bottom: 32px;
+  max-width: 400px;
+}
+.brandList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.brandListItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+}
+.brandCheck {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+/* Form panel */
+.formWrap {
+  width: 100%;
+  max-width: 420px;
+}
+.formHeading {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+.formSubtitle {
+  color: #6b7280;
+  font-size: 14px;
+  margin-bottom: 28px;
+}
+.socialRow {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.socialBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+}
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.dividerLine {
+  flex: 1;
+  height: 1px;
+  background: #e5e7eb;
+}
+.dividerText {
+  font-size: 13px;
+  color: #9ca3af;
+}
+.hidden {
+  display: none;
+}
+.passwordRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.passwordLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+}
+.passwordLinks {
+  display: flex;
+  gap: 12px;
+}
+.linkMuted {
+  font-size: 13px;
+  color: #6b7280;
+  text-decoration: none;
+}
+.linkPrimary {
+  font-size: 13px;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+.fieldEmail {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 14px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  outline: none;
+}
+.fieldPassword {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 14px;
+  margin-bottom: 8px;
+  box-sizing: border-box;
+  outline: none;
+}
+.errorText {
+  color: #ef4444;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+.rememberLabel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #374151;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.submitBtn {
+  width: 100%;
+  padding: 14px;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+.footerText {
+  text-align: center;
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0;
+}
+.footerLink {
+  color: var(--color-primary);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}

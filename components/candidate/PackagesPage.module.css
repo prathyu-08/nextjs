@@ -1,0 +1,156 @@
+/* ============================================================================
+   PackagesPage — Current plan banner + plan tier grid
+   ============================================================================ */
+
+/* Current plan banner */
+.currentPlan {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 12px;
+  padding: 24px;
+  color: #fff;
+  margin-bottom: 28px;
+  position: relative;
+  overflow: hidden;
+}
+.activeChip {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.currentTitle {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+.currentSub {
+  opacity: 0.9;
+  margin: 0 0 16px;
+}
+.currentGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+.currentCell {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 12px 16px;
+  text-align: center;
+}
+.currentCellLabel {
+  font-size: 11px;
+  opacity: 0.8;
+  margin-bottom: 4px;
+}
+.currentCellValue {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* Plan grid */
+.plansGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.plan {
+  background: #fff;
+  border-radius: 16px;
+  border: 2px solid #e5e7eb;
+  padding: 28px;
+  position: relative;
+}
+.planPopular {
+  border-color: #2563eb;
+}
+.planCurrent {
+  border-color: #22c55e;
+}
+.ribbon {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  padding: 4px 18px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.ribbonPopular {
+  background: #2563eb;
+}
+.ribbonCurrent {
+  background: #22c55e;
+}
+.planName {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 14px;
+}
+.priceRow {
+  margin-bottom: 12px;
+}
+.priceCurrency {
+  font-size: 22px;
+  color: #2563eb;
+}
+.priceValue {
+  font-size: 44px;
+  font-weight: 700;
+  color: #1f2937;
+}
+.pricePer {
+  font-size: 14px;
+  color: #6b7280;
+}
+.planDesc {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+.features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+}
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #4b5563;
+  margin-bottom: 10px;
+}
+.featureIcon {
+  color: #16a34a;
+  font-size: 12px;
+}
+.planBtn {
+  width: 100%;
+  padding: 12px;
+  background: #f9fafb;
+  color: #374151;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+}
+.planBtnPopular {
+  background: #2563eb;
+  color: #fff;
+  border-color: #2563eb;
+}
+.planBtnCurrent {
+  background: #f9fafb;
+  color: #6b7280;
+  border-color: #e5e7eb;
+}

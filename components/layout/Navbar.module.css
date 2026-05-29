@@ -1,0 +1,313 @@
+/* ── Header shell ──────────────────────────────────────────── */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid #f1f5f9;
+}
+.headerInner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+/* ── Logo ──────────────────────────────────────────────────── */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+.logoIcon {
+  position: relative;
+  width: 48px;
+  height: 40px;
+}
+.logoShape {
+  position: absolute;
+  bottom: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  transform: rotate(45deg);
+}
+.logoShape1 {
+  left: 0;
+  background: #fde047;
+}
+.logoShape2 {
+  left: 10px;
+  background: #4ade80;
+  opacity: 0.9;
+  transform: rotate(45deg) translate(2px, -2px);
+}
+.logoShape3 {
+  left: 20px;
+  background: #06b6d4;
+  opacity: 0.9;
+  transform: rotate(45deg) translate(4px, -4px);
+}
+.logoText {
+  font-size: 20px;
+  font-weight: 800;
+  color: #1a9bc0;
+  font-family: Georgia, serif;
+  letter-spacing: 1px;
+}
+.logoTagline {
+  font-size: 9px;
+  color: #9ca3af;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* ── Desktop nav ───────────────────────────────────────────── */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.navItemWrap {
+  position: relative;
+}
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #4b5563;
+  cursor: pointer;
+  border-radius: 8px;
+  text-decoration: none;
+  background: transparent;
+}
+.navLinkActive {
+  background: #f0fdfa;
+}
+
+/* ── Dropdown ──────────────────────────────────────────────── */
+.dropdown {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  min-width: 220px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+  border: 1px solid #f1f5f9;
+  padding: 6px 0;
+  z-index: 99;
+  max-height: 420px;
+  overflow-y: auto;
+}
+.dropdownLink {
+  display: block;
+  padding: 9px 16px;
+  font-size: 13px;
+  color: #4b5563;
+  text-decoration: none;
+  background: transparent;
+  transition: background 0.15s ease;
+}
+.dropdownLink:hover {
+  background: #f0fdfa;
+}
+
+/* ── Actions area ──────────────────────────────────────────── */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.profileWrap {
+  position: relative;
+}
+.profileBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  cursor: pointer;
+}
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #6366f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+}
+.profileName {
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.profileMenu {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  min-width: 220px;
+  margin-top: 4px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+  border: 1px solid #f1f5f9;
+  padding: 6px 0;
+  z-index: 99;
+}
+.profileMenuHeader {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f3f4f6;
+}
+.profileMenuName {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 2px;
+}
+.profileMenuRole {
+  font-size: 11px;
+  color: #6b7280;
+}
+.profileMenuLink {
+  display: block;
+  padding: 9px 16px;
+  font-size: 13px;
+  color: #4b5563;
+  text-decoration: none;
+}
+.profileMenuLogout {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 9px 16px;
+  font-size: 13px;
+  color: #dc2626;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* ── Auth buttons (desktop) ────────────────────────────────── */
+.authSignIn {
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #06b6d4;
+  border: 2px solid #06b6d4;
+  border-radius: 999px;
+  text-decoration: none;
+}
+.authRegister {
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  background: #22c55e;
+  border-radius: 999px;
+  text-decoration: none;
+}
+
+/* ── Mobile toggle ─────────────────────────────────────────── */
+.mobileToggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: none;
+}
+
+/* ── Mobile menu ───────────────────────────────────────────── */
+.mobileMenu {
+  background: #fff;
+  border-top: 1px solid #f1f5f9;
+  padding: 12px 16px;
+}
+.mobileItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #4b5563;
+  cursor: pointer;
+  border-radius: 8px;
+}
+.mobileSubLink {
+  display: block;
+  padding: 8px 12px 8px 28px;
+  font-size: 13px;
+  color: #6b7280;
+  text-decoration: none;
+}
+.mobileActions {
+  margin-top: 8px;
+  display: flex;
+  gap: 10px;
+}
+.mobileDashboard {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #2563eb;
+  border: 1px solid #2563eb;
+  border-radius: 8px;
+  text-decoration: none;
+}
+.mobileLogout {
+  flex: 1;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  background: #fef2f2;
+  cursor: pointer;
+}
+.mobileSignIn {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #06b6d4;
+  border: 2px solid #06b6d4;
+  border-radius: 999px;
+  text-decoration: none;
+}
+.mobileRegister {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  background: #22c55e;
+  border-radius: 999px;
+  text-decoration: none;
+}

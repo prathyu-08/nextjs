@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import styles from './FaqPage.module.css';
 
 export default function FaqPage() {
   const router = useRouter();
@@ -38,20 +39,20 @@ export default function FaqPage() {
   return (
     <>
       {/* Hero */}
-      <section style={{ background:"linear-gradient(135deg,#667eea,#764ba2)", padding:"100px 0", color:"#fff" }}>
-        <div style={{ maxWidth:600, margin:"0 auto", padding:"0 24px", textAlign:"center" }}>
-          <h1 style={{ fontSize:"clamp(2rem,4vw,3rem)", fontWeight:800, margin:"0 0 16px" }}>Frequently Asked Questions</h1>
-          <p style={{ fontSize:18, opacity:0.9, margin:0 }}>Find answers to common questions about JobsPortal.</p>
+      <section className={styles.hero}>
+        <div className={styles.heroInner}>
+          <h1 className={styles.heroTitle}>Frequently Asked Questions</h1>
+          <p className={styles.heroLead}>Find answers to common questions about JobsPortal.</p>
         </div>
       </section>
 
-      <section style={{ padding:"80px 0" }}>
-        <div style={{ maxWidth:900, margin:"0 auto", padding:"0 24px" }}>
+      <section className="section">
+        <div className={styles.faqWrap}>
           {/* Category tabs */}
-          <div style={{ display:"flex", gap:10, justifyContent:"center", marginBottom:48, flexWrap:"wrap" }}>
+          <div className={styles.tabs}>
             {categories.map(cat => (
               <button key={cat} onClick={() => { setActiveCategory(cat); setOpenIndex(0); }}
-                style={{ padding:"10px 22px", borderRadius:30, border:"1px solid", borderColor:activeCategory===cat?"#2563eb":"#e5e7eb", background:activeCategory===cat?"#2563eb":"#fff", color:activeCategory===cat?"#fff":"#6b7280", fontSize:14, fontWeight:500, cursor:"pointer", textTransform:"capitalize" }}>
+                className={`${styles.tab} ${activeCategory===cat ? styles.tabActive : ''}`}>
                 {cat}
               </button>
             ))}
@@ -60,15 +61,14 @@ export default function FaqPage() {
           {/* FAQ accordion */}
           <div>
             {(faqs[activeCategory]||[]).map((item,i) => (
-              <div key={i} style={{ background:"#fff", borderRadius:12, border:"1px solid #e5e7eb", marginBottom:12, overflow:"hidden" }}>
-                <button onClick={() => setOpenIndex(openIndex===i ? -1 : i)}
-                  style={{ width:"100%", padding:"20px 24px", background:"transparent", border:"none", display:"flex", justifyContent:"space-between", alignItems:"center", fontSize:16, fontWeight:600, color:"#1f2937", cursor:"pointer", textAlign:"left" }}>
+              <div key={i} className={styles.faqItem}>
+                <button onClick={() => setOpenIndex(openIndex===i ? -1 : i)} className={styles.faqQuestion}>
                   {item.q}
-                  <i className={`fa-solid fa-chevron-${openIndex===i?"up":"down"}`} style={{ color:"#6b7280", fontSize:14, flexShrink:0 }} />
+                  <i className={`fa-solid fa-chevron-${openIndex===i?"up":"down"} ${styles.faqChevron}`} />
                 </button>
                 {openIndex===i && (
-                  <div style={{ padding:"0 24px 20px" }}>
-                    <p style={{ fontSize:14, color:"#4b5563", lineHeight:1.7, margin:0 }}>{item.a}</p>
+                  <div className={styles.faqAnswerWrap}>
+                    <p className={styles.faqAnswer}>{item.a}</p>
                   </div>
                 )}
               </div>
@@ -76,10 +76,10 @@ export default function FaqPage() {
           </div>
 
           {/* CTA */}
-          <div style={{ textAlign:"center", marginTop:60, background:"#f9fafb", borderRadius:16, padding:40 }}>
-            <h3 style={{ fontSize:22, fontWeight:700, color:"#1f2937", marginBottom:8 }}>Still have questions?</h3>
-            <p style={{ fontSize:14, color:"#6b7280", marginBottom:20 }}>Can't find what you're looking for? Our support team is happy to help.</p>
-            <button onClick={() => router.push("/public/contact")} style={{ padding:"12px 28px", background:"#2563eb", color:"#fff", border:"none", borderRadius:10, fontWeight:700, cursor:"pointer", fontSize:15 }}>Contact Support</button>
+          <div className={styles.cta}>
+            <h3 className={styles.ctaTitle}>Still have questions?</h3>
+            <p className={styles.ctaText}>Can't find what you're looking for? Our support team is happy to help.</p>
+            <button onClick={() => router.push("/public/contact")} className={styles.ctaBtn}>Contact Support</button>
           </div>
         </div>
       </section>

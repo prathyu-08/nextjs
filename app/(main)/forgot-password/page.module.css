@@ -1,0 +1,141 @@
+/* Page grid */
+.page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(360px, 1.05fr);
+  background: #fff;
+}
+
+/* Brand panel */
+.brand {
+  background: #0f766e;
+  color: #fff;
+  padding: 64px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.eyebrow {
+  display: inline-flex;
+  width: fit-content;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 28px;
+}
+.brandHeading {
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 1.05;
+  font-weight: 850;
+  margin-bottom: 18px;
+}
+.brandLead {
+  max-width: 460px;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.75;
+  font-size: 16px;
+}
+
+/* Form panel */
+.formPanel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  background: #f8fafc;
+}
+.card {
+  width: 100%;
+  max-width: 430px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 34px;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+}
+.iconWrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: #ccfbf1;
+  color: #0f766e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+}
+.heading {
+  font-size: 27px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+.subtitle {
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 26px;
+}
+.label {
+  display: block;
+  font-size: 14px;
+  font-weight: 650;
+  color: #334155;
+  margin-bottom: 7px;
+}
+.input {
+  width: 100%;
+  padding: 13px 15px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  margin-bottom: 14px;
+}
+.errorText {
+  color: #dc2626;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+.messageText {
+  color: #047857;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+.submitBtn {
+  width: 100%;
+  padding: 14px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #0f766e;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+.footerText {
+  text-align: center;
+  margin-top: 22px;
+  color: #64748b;
+  font-size: 14px;
+}
+.footerLink {
+  color: #0f766e;
+  font-weight: 700;
+}
+
+/* Mobile */
+@media (max-width: 860px) {
+  .page {
+    grid-template-columns: 1fr;
+  }
+}

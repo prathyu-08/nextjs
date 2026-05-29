@@ -1,0 +1,121 @@
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  padding: 100px 0;
+  color: #fff;
+}
+.heroInner {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+}
+.heroTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  margin: 0 0 16px;
+}
+.heroLead {
+  font-size: 18px;
+  opacity: 0.9;
+  margin: 0;
+}
+
+/* Content container */
+.faqWrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Category tabs */
+.tabs {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+.tab {
+  padding: 10px 22px;
+  border-radius: 30px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+.tabActive {
+  border-color: #2563eb;
+  background: #2563eb;
+  color: #fff;
+}
+
+/* Accordion */
+.faqItem {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+.faqQuestion {
+  width: 100%;
+  padding: 20px 24px;
+  background: transparent;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+  cursor: pointer;
+  text-align: left;
+}
+.faqChevron {
+  color: #6b7280;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.faqAnswerWrap {
+  padding: 0 24px 20px;
+}
+.faqAnswer {
+  font-size: 14px;
+  color: #4b5563;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* CTA */
+.cta {
+  text-align: center;
+  margin-top: 60px;
+  background: #f9fafb;
+  border-radius: 16px;
+  padding: 40px;
+}
+.ctaTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+.ctaText {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+.ctaBtn {
+  padding: 12px 28px;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 15px;
+}

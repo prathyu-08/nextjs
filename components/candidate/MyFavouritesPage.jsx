@@ -1,6 +1,7 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import { Shell, IMG } from "./_shared";
+import styles from "./MyFavouritesPage.module.css";
 
 export default function MyFavouritesPage() {
   const router = useRouter();
@@ -13,33 +14,33 @@ export default function MyFavouritesPage() {
   const typeColor = { "Full Time":["#dcfce7","#166534"], "Part Time":["#dbeafe","#1e40af"], "Contract":["#fee2e2","#dc2626"] };
   return (
     <Shell path="/candidate/favourites" title="My Favourite Jobs" subtitle={`${jobs.length} saved jobs`}>
-      <div style={{ display:"grid", gridTemplateColumns:"repeat(2,1fr)", gap:20 }}>
+      <div className={styles.grid}>
         {jobs.map((job,i) => {
           const [bg,color] = typeColor[job.type]||["#f3f4f6","#374151"];
           return (
-            <div key={i} style={{ background:"#fff", borderRadius:12, border:"1px solid #e5e7eb", overflow:"hidden" }}>
-              <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", padding:16 }}>
-                <img src={job.logo} alt={job.company} style={{ width:48, height:48, borderRadius:10, objectFit:"cover" }} />
-                <button style={{ width:32, height:32, borderRadius:8, border:"1px solid #fecaca", background:"#fee2e2", color:"#dc2626", cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", fontSize:14 }}>♥</button>
+            <div key={i} className={styles.card}>
+              <div className={styles.cardTop}>
+                <img src={job.logo} alt={job.company} className={styles.logo} />
+                <button className={styles.heartBtn}>♥</button>
               </div>
-              <div style={{ padding:"0 16px 16px" }}>
-                <h3 style={{ fontSize:16, fontWeight:600, color:"#1f2937", margin:"0 0 4px" }}>{job.title}</h3>
-                <div style={{ fontSize:13, color:"#6b7280", marginBottom:12 }}>{job.company}</div>
-                <div style={{ display:"flex", flexWrap:"wrap", gap:10, marginBottom:12 }}>
+              <div className={styles.cardBody}>
+                <h3 className={styles.title}>{job.title}</h3>
+                <div className={styles.company}>{job.company}</div>
+                <div className={styles.metaRow}>
                   {[["fa-map-marker",job.location],["fa-money-bill",job.salary]].map(([icon,text],j) => (
-                    <span key={j} style={{ display:"flex", alignItems:"center", gap:4, fontSize:12, color:"#6b7280" }}>
-                      <i className={`fa-solid ${icon}`} style={{ color:"#2563eb" }} />{text}
+                    <span key={j} className={styles.metaItem}>
+                      <i className={`fa-solid ${icon} ${styles.metaIcon}`} />{text}
                     </span>
                   ))}
-                  <span style={{ padding:"2px 10px", borderRadius:20, fontSize:11, fontWeight:600, background:bg, color }}>{job.type}</span>
+                  <span className={styles.typeBadge} style={{ background:bg, color }}>{job.type}</span>
                 </div>
-                <p style={{ fontSize:13, color:"#4b5563", lineHeight:1.5, marginBottom:14 }}>{job.desc}</p>
+                <p className={styles.desc}>{job.desc}</p>
               </div>
-              <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", padding:"12px 16px", borderTop:"1px solid #e5e7eb" }}>
-                <span style={{ fontSize:12, color:"#9ca3af" }}>Posted {job.posted}</span>
-                <div style={{ display:"flex", gap:8 }}>
-                  <button onClick={() => router.push("/jobs")} style={{ padding:"7px 14px", border:"1px solid #e5e7eb", background:"#f9fafb", color:"#374151", borderRadius:8, cursor:"pointer", fontSize:12 }}>Details</button>
-                  <button style={{ padding:"7px 14px", background:"#2563eb", color:"#fff", border:"none", borderRadius:8, cursor:"pointer", fontSize:12, fontWeight:600 }}>Apply Now</button>
+              <div className={styles.cardFooter}>
+                <span className={styles.posted}>Posted {job.posted}</span>
+                <div className={styles.actions}>
+                  <button onClick={() => router.push("/jobs")} className={styles.detailsBtn}>Details</button>
+                  <button className={styles.applyBtn}>Apply Now</button>
                 </div>
               </div>
             </div>

@@ -1,0 +1,135 @@
+/* Page layout */
+.page {
+  background: #f7f9fc;
+  min-height: 100vh;
+  padding: 40px 0 60px;
+}
+.layout {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+.main {
+  flex: 1;
+}
+
+/* Headings */
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 4px;
+}
+.subtitle {
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+/* Cards */
+.card {
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  padding: 28px;
+  margin-bottom: 24px;
+}
+.cardTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 20px;
+}
+.cardTitleTight {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 16px;
+}
+
+/* Options list */
+.optionList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.optionRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+}
+.checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: #2563eb;
+}
+.optionTitle {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f2937;
+}
+.optionDesc {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* Security card buttons */
+.btnRow {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.btnSecondary {
+  padding: 10px 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  background: transparent;
+}
+
+/* Danger zone */
+.dangerCard {
+  background: #fff;
+  border-radius: 16px;
+  border: 2px solid #fecaca;
+  padding: 28px;
+}
+.dangerTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #dc2626;
+  margin-bottom: 8px;
+}
+.dangerDesc {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 16px;
+}
+.dangerActions {
+  display: flex;
+  gap: 12px;
+}
+.btnDangerOutline {
+  padding: 10px 20px;
+  border: 1px solid #dc2626;
+  color: #dc2626;
+  background: transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+.btnDangerFilled {
+  padding: 10px 20px;
+  background: #dc2626;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}

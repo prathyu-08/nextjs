@@ -1,6 +1,7 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import { Shell, IMG } from "./_shared";
+import styles from "./MyFollowingsPage.module.css";
 
 export default function MyFollowingsPage() {
   const router = useRouter();
@@ -12,26 +13,26 @@ export default function MyFollowingsPage() {
   ];
   return (
     <Shell path="/candidate/my-followings" title="My Followings" subtitle={`Following ${companies.length} companies`}>
-      <div style={{ display:"grid", gridTemplateColumns:"repeat(2,1fr)", gap:20 }}>
+      <div className={styles.grid}>
         {companies.map((c,i) => (
-          <div key={i} style={{ background:"#fff", borderRadius:12, border:"1px solid #e5e7eb", padding:20 }}>
-            <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", marginBottom:16 }}>
-              <img src={c.logo} alt={c.name} style={{ width:56, height:56, borderRadius:12, objectFit:"cover" }} />
-              <button style={{ padding:"6px 14px", borderRadius:8, border:"1px solid #fecaca", background:"#fee2e2", color:"#dc2626", fontSize:12, fontWeight:500, cursor:"pointer" }}>Unfollow</button>
+          <div key={i} className={styles.card}>
+            <div className={styles.cardTop}>
+              <img src={c.logo} alt={c.name} className={styles.logo} />
+              <button className={styles.unfollowBtn}>Unfollow</button>
             </div>
-            <h3 style={{ fontSize:16, fontWeight:600, color:"#1f2937", margin:"0 0 4px" }}>{c.name}</h3>
-            <div style={{ fontSize:13, color:"#6b7280", marginBottom:10 }}>{c.industry}</div>
-            <div style={{ display:"flex", gap:16, marginBottom:12 }}>
+            <h3 className={styles.name}>{c.name}</h3>
+            <div className={styles.industry}>{c.industry}</div>
+            <div className={styles.metaRow}>
               {[["fa-map-marker",c.location],["fa-briefcase",`${c.jobs} open jobs`],["fa-users",`${c.size} employees`]].map(([icon,text],j) => (
-                <span key={j} style={{ display:"flex", alignItems:"center", gap:4, fontSize:12, color:"#6b7280" }}>
-                  <i className={`fa-solid ${icon}`} style={{ color:"#2563eb" }} />{text}
+                <span key={j} className={styles.metaItem}>
+                  <i className={`fa-solid ${icon} ${styles.metaIcon}`} />{text}
                 </span>
               ))}
             </div>
-            <p style={{ fontSize:13, color:"#4b5563", lineHeight:1.5, marginBottom:16 }}>{c.desc}</p>
-            <div style={{ display:"flex", gap:8 }}>
-              <button onClick={() => router.push("/employer/single")} style={{ flex:1, padding:"9px", border:"1px solid #2563eb", color:"#2563eb", background:"transparent", borderRadius:8, cursor:"pointer", fontSize:13, fontWeight:500 }}>View Company</button>
-              <button onClick={() => router.push("/jobs")} style={{ flex:1, padding:"9px", background:"#2563eb", color:"#fff", border:"none", borderRadius:8, cursor:"pointer", fontSize:13, fontWeight:600 }}>View Jobs</button>
+            <p className={styles.desc}>{c.desc}</p>
+            <div className={styles.actions}>
+              <button onClick={() => router.push("/employer/single")} className={styles.viewCompanyBtn}>View Company</button>
+              <button onClick={() => router.push("/jobs")} className={styles.viewJobsBtn}>View Jobs</button>
             </div>
           </div>
         ))}

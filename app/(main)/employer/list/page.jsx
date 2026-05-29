@@ -1,5 +1,6 @@
 'use client';
 import { useRouter } from 'next/navigation';
+import styles from "./page.module.css";
 
 const IMG = "https://www.sharjeelanjum.com/html/jobs-portal/images";
 const employers = [
@@ -14,36 +15,36 @@ export default function EmployerListPage() {
   const router = useRouter();
   return (
     <>
-      <section style={{ background:"linear-gradient(120deg,#dbeafe,#e0e7ff,#dcfce7)",padding:"60px 0",borderBottom:"1px solid #e5e7eb" }}>
-        <div style={{ maxWidth:800,margin:"0 auto",padding:"0 24px",textAlign:"center" }}>
-          <span style={{ display:"inline-block",padding:"6px 16px",background:"rgba(255,255,255,0.7)",borderRadius:30,fontSize:12,fontWeight:600,color:"#2563eb",textTransform:"uppercase",letterSpacing:1,marginBottom:20 }}>Explore top employers</span>
-          <h1 style={{ fontSize:42,fontWeight:800,color:"#1f2937",margin:"0 0 12px",lineHeight:1.2 }}>Find companies that align with your values</h1>
-          <p style={{ fontSize:16,color:"#6b7280",marginBottom:28 }}>Browse company profiles, read about their culture, and connect with employers actively building diverse teams.</p>
-          <div style={{ background:"#fff",padding:20,borderRadius:16,boxShadow:"0 10px 40px rgba(0,0,0,0.08)" }}>
-            <div style={{ display:"grid",gridTemplateColumns:"5fr 3fr 3fr 1fr",gap:12 }}>
+      <section className={styles.hero}>
+        <div className={styles.heroInner}>
+          <span className={styles.eyebrow}>Explore top employers</span>
+          <h1 className={styles.heroTitle}>Find companies that align with your values</h1>
+          <p className={styles.heroDesc}>Browse company profiles, read about their culture, and connect with employers actively building diverse teams.</p>
+          <div className={styles.searchPanel}>
+            <div className={styles.searchGrid}>
               {[{icon:"fa-building",placeholder:"Company name or keyword",type:"text"},{icon:"fa-location-dot",type:"select",opts:["Location","New York","San Francisco","Chicago"]},{icon:"fa-industry",type:"select",opts:["Industry","Design","Tech","HR"]}].map((f,i)=>(
-                <label key={i} style={{ display:"flex",alignItems:"center",gap:10,background:"#f9fafb",border:"1px solid #e5e7eb",borderRadius:10,padding:"0 14px",height:50 }}>
-                  <i className={`fa ${f.icon}`} style={{ color:"#2563eb" }}/>
-                  {f.type==="text" ? <input placeholder={f.placeholder} style={{ border:"none",background:"transparent",outline:"none",fontSize:13,flex:1 }}/> :
-                    <select style={{ border:"none",background:"transparent",outline:"none",fontSize:13,flex:1 }}>{f.opts.map((o,j)=><option key={j}>{o}</option>)}</select>}
+                <label key={i} className={styles.searchField}>
+                  <i className={`fa ${f.icon} ${styles.searchIcon}`}/>
+                  {f.type==="text" ? <input placeholder={f.placeholder} className={styles.searchInput}/> :
+                    <select className={styles.searchInput}>{f.opts.map((o,j)=><option key={j}>{o}</option>)}</select>}
                 </label>
               ))}
-              <button style={{ background:"#2563eb",color:"#fff",border:"none",borderRadius:10,height:50,cursor:"pointer",fontSize:18 }}><i className="fa fa-search"/></button>
+              <button className={styles.searchBtn}><i className="fa fa-search"/></button>
             </div>
           </div>
         </div>
       </section>
 
-      <section style={{ background:"#f9fafb",padding:"40px 0" }}>
-        <div style={{ maxWidth:1280,margin:"0 auto",padding:"0 24px" }}>
-          <div style={{ display:"grid",gridTemplateColumns:"280px 1fr",gap:24 }}>
+      <section className={styles.listingSection}>
+        <div className={styles.listingInner}>
+          <div className={styles.listingGrid}>
             <aside>
-              <div style={{ background:"#fff",borderRadius:16,border:"1px solid #e5e7eb",padding:24,marginBottom:20 }}>
-                <h5 style={{ fontSize:16,fontWeight:700,color:"#1f2937",marginBottom:14 }}>Search companies</h5>
+              <div className={styles.filterCard}>
+                <h5 className={styles.filterTitle}>Search companies</h5>
                 {["Company name","Location","Industry"].map((p,i)=>(
-                  <input key={i} placeholder={p} style={{ width:"100%",marginBottom:10,padding:"10px 12px",border:"1px solid #e5e7eb",borderRadius:8,fontSize:13,boxSizing:"border-box",outline:"none" }}/>
+                  <input key={i} placeholder={p} className={styles.filterInput}/>
                 ))}
-                <button style={{ width:"100%",padding:10,background:"#2563eb",color:"#fff",border:"none",borderRadius:8,fontWeight:600,cursor:"pointer" }}>Apply filters</button>
+                <button className={styles.applyBtn}>Apply filters</button>
               </div>
               {[
                 { title:"Company size", items:[["1-10 employees","12"],["11-50 employees","24"],["51-200 employees","18"],["200+ employees","9"]] },
@@ -51,14 +52,14 @@ export default function EmployerListPage() {
                 { title:"Industry", items:[["Information Technology","22"],["Design & Creative","15"],["Marketing","13"],["Finance","9"]] },
                 { title:"Work model", items:[["Remote","18"],["Hybrid","24"],["On-site","15"]] },
               ].map((card,i)=>(
-                <div key={i} style={{ background:"#fff",borderRadius:16,border:"1px solid #e5e7eb",padding:24,marginBottom:20 }}>
-                  <h5 style={{ fontSize:16,fontWeight:700,color:"#1f2937",marginBottom:14 }}>{card.title}</h5>
-                  <ul style={{ listStyle:"none",padding:0,margin:0 }}>
+                <div key={i} className={styles.filterCard}>
+                  <h5 className={styles.filterTitle}>{card.title}</h5>
+                  <ul className={styles.filterList}>
                     {card.items.map(([label,count],j)=>(
-                      <li key={j} style={{ marginBottom:10 }}>
-                        <label style={{ display:"flex",justifyContent:"space-between",alignItems:"center",cursor:"pointer",color:"#4b5563",fontSize:14 }}>
-                          <span><input type="checkbox" style={{ marginRight:10 }}/>{label}</span>
-                          <span style={{ fontSize:11,color:"#9ca3af",background:"#f3f4f6",padding:"2px 8px",borderRadius:10 }}>{count}</span>
+                      <li key={j} className={styles.filterListItem}>
+                        <label className={styles.filterLabel}>
+                          <span><input type="checkbox" className={styles.filterCheckbox}/>{label}</span>
+                          <span className={styles.filterCount}>{count}</span>
                         </label>
                       </li>
                     ))}
@@ -68,55 +69,53 @@ export default function EmployerListPage() {
             </aside>
 
             <div>
-              <div style={{ display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:24,flexWrap:"wrap",gap:12 }}>
+              <div className={styles.resultsHeader}>
                 <div>
-                  <h2 style={{ fontSize:24,fontWeight:700,color:"#1f2937",marginBottom:4 }}>5 Companies Found</h2>
-                  <span style={{ fontSize:14,color:"#6b7280" }}>Showing 1 - 5 verified employers</span>
+                  <h2 className={styles.resultsTitle}>5 Companies Found</h2>
+                  <span className={styles.resultsSub}>Showing 1 - 5 verified employers</span>
                 </div>
-                <div style={{ display:"flex",alignItems:"center",gap:12 }}>
-                  <div style={{ display:"flex",border:"1px solid #e5e7eb",borderRadius:10,overflow:"hidden" }}>
+                <div className={styles.resultsControls}>
+                  <div className={styles.viewToggle}>
                     {["fa-th-large","fa-bars"].map((icon,i)=>(
-                      <button key={i} style={{ padding:"10px 14px",border:"none",background:i===1?"#2563eb":"#fff",color:i===1?"#fff":"#6b7280",cursor:"pointer",fontSize:14 }}>
+                      <button key={i} className={`${styles.viewToggleBtn} ${i===1?styles.viewToggleBtnActive:""}`}>
                         <i className={`fa ${icon}`}/>
                       </button>
                     ))}
                   </div>
-                  <select style={{ padding:"10px 16px",border:"1px solid #e5e7eb",borderRadius:10,fontSize:14,outline:"none" }}>
+                  <select className={styles.sortSelect}>
                     <option>Most relevant</option><option>Most openings</option><option>Recently joined</option>
                   </select>
                 </div>
               </div>
 
-              <div style={{ display:"flex",flexDirection:"column",gap:16 }}>
+              <div className={styles.employerList}>
                 {employers.map((emp, i) => (
-                  <article key={i} style={{ background:"#fff",borderRadius:16,border:"1px solid #e5e7eb",padding:24,display:"flex",gap:20,alignItems:"flex-start",transition:"all 0.3s" }}
-                    onMouseEnter={e=>e.currentTarget.style.boxShadow="0 8px 25px rgba(0,0,0,.08)"}
-                    onMouseLeave={e=>e.currentTarget.style.boxShadow="none"}>
-                    <div style={{ width:72,height:72,borderRadius:12,overflow:"hidden",flexShrink:0 }}>
-                      <img src={emp.logo} alt={emp.name} style={{ width:"100%",height:"100%",objectFit:"cover" }}/>
+                  <article key={i} className={styles.empCard}>
+                    <div className={styles.logoBox}>
+                      <img src={emp.logo} alt={emp.name} className={styles.logoImg}/>
                     </div>
-                    <div style={{ flex:1 }}>
-                      <div style={{ display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:10 }}>
+                    <div className={styles.empMain}>
+                      <div className={styles.empMainHeader}>
                         <div>
-                          {emp.verified && <span style={{ fontSize:11,fontWeight:600,color:"#16a34a",background:"#dcfce7",padding:"3px 8px",borderRadius:20,marginBottom:6,display:"inline-block" }}>Verified</span>}
-                          <h4 style={{ fontSize:18,fontWeight:700,color:"#1f2937",margin:"4px 0 4px" }}>
-                            <a onClick={()=>router.push("/employer/single")} style={{ color:"inherit",cursor:"pointer",textDecoration:"none" }}>{emp.name}</a>
+                          {emp.verified && <span className={styles.verifiedBadge}>Verified</span>}
+                          <h4 className={styles.empName}>
+                            <a onClick={()=>router.push("/employer/single")} className={styles.empNameLink}>{emp.name}</a>
                           </h4>
-                          <p style={{ fontSize:13,color:"#6b7280",margin:0 }}>{emp.type} · {emp.employees} employees · {emp.location}</p>
+                          <p className={styles.empMeta}>{emp.type} · {emp.employees} employees · {emp.location}</p>
                         </div>
-                        <button style={{ padding:"8px 12px",border:"1px solid #e5e7eb",borderRadius:8,background:"#fff",cursor:"pointer",fontSize:12 }}>☆ Follow</button>
+                        <button className={styles.followBtn}>☆ Follow</button>
                       </div>
-                      <p style={{ fontSize:14,color:"#4b5563",lineHeight:1.6,marginBottom:12 }}>{emp.description}</p>
-                      <div style={{ display:"flex",flexWrap:"wrap",gap:8 }}>
-                        {emp.tags.map((tag,j)=><span key={j} style={{ padding:"4px 12px",background:"#f3f4f6",borderRadius:20,fontSize:12,color:"#4b5563" }}>{tag}</span>)}
+                      <p className={styles.empDesc}>{emp.description}</p>
+                      <div className={styles.tagRow}>
+                        {emp.tags.map((tag,j)=><span key={j} className={styles.tag}>{tag}</span>)}
                       </div>
                     </div>
-                    <div style={{ flexShrink:0,display:"flex",flexDirection:"column",gap:12,alignItems:"flex-end",minWidth:160 }}>
-                      <div style={{ fontSize:13,color:"#6b7280",textAlign:"right" }}>
-                        <div><i className="fa fa-briefcase" style={{ marginRight:6,color:"#2563eb" }}/>{emp.openPositions} open positions</div>
-                        <div style={{ marginTop:6 }}><i className="fa fa-calendar" style={{ marginRight:6,color:"#2563eb" }}/>Founded {emp.founded}</div>
+                    <div className={styles.empSide}>
+                      <div className={styles.empSideInfo}>
+                        <div><i className={`fa fa-briefcase ${styles.empSideInfoIcon}`}/>{emp.openPositions} open positions</div>
+                        <div className={styles.empSideRow2}><i className={`fa fa-calendar ${styles.empSideInfoIcon}`}/>Founded {emp.founded}</div>
                       </div>
-                      <button onClick={()=>router.push("/employer/single")} style={{ padding:"10px 20px",border:"1px solid #17d27c",color:"#17d27c",background:"transparent",borderRadius:8,cursor:"pointer",fontSize:13,fontWeight:600,whiteSpace:"nowrap" }}>View company</button>
+                      <button onClick={()=>router.push("/employer/single")} className={styles.viewBtn}>View company</button>
                     </div>
                   </article>
                 ))}

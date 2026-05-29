@@ -1,0 +1,242 @@
+/* ============================================================================
+   EditProfilePage — Candidate profile editor with section cards
+   ============================================================================ */
+
+/* Section card */
+.sectionCard {
+  background: #fff;
+  border: 1px solid #e8eef6;
+  border-radius: 20px;
+  padding: 26px;
+  margin-bottom: 28px;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+}
+.headerCard {
+  padding: 28px;
+}
+
+/* Field primitives */
+.label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 7px;
+}
+.input {
+  width: 100%;
+  height: 42px;
+  padding: 9px 13px;
+  border: 1px solid #d7e1ed;
+  border-radius: 10px;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 13px;
+  box-sizing: border-box;
+  outline: none;
+}
+.textarea {
+  width: 100%;
+  padding: 9px 13px;
+  border: 1px solid #d7e1ed;
+  border-radius: 10px;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 13px;
+  box-sizing: border-box;
+  outline: none;
+  min-height: 96px;
+  resize: vertical;
+  line-height: 1.55;
+}
+.eyebrow {
+  margin: 0 0 5px;
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #475569;
+  font-weight: 700;
+}
+.heading {
+  margin: 0 0 2px;
+  font-size: 18px;
+  color: #0f172a;
+  font-weight: 800;
+}
+.helper {
+  margin: 0 0 20px;
+  font-size: 14px;
+  color: #475569;
+}
+.fieldBlock {
+  display: block;
+}
+.fieldSpan2 {
+  display: block;
+  grid-column: span 2;
+}
+.fieldSpan2Row2 {
+  display: block;
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+/* Profile header */
+.profileHeader {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.avatar {
+  width: 92px;
+  height: 92px;
+  border-radius: 18px;
+  object-fit: cover;
+}
+.headerInfo {
+  flex: 1 1 420px;
+}
+.updatePhotoBtn {
+  border: 0;
+  background: transparent;
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 18px;
+}
+.iconSpacer {
+  margin-right: 7px;
+}
+.eyebrowBadge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #e8efff;
+  color: #2563eb;
+  font-size: 11px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.profileName {
+  margin: 0 0 5px;
+  font-size: 30px;
+  line-height: 1.1;
+  color: #0f172a;
+  font-weight: 800;
+}
+.profileTagline {
+  margin: 0 0 14px;
+  color: #475569;
+  font-size: 15px;
+}
+.metaRow {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.metaChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: #eef4ff;
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+/* Section header (eyebrow + heading + helper + action) */
+.sectionHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.sectionAction {
+  padding: 8px 12px;
+  border: 1px solid #2563eb;
+  border-radius: 8px;
+  background: #fff;
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.sectionActionGrey {
+  padding: 8px 12px;
+  border: 1px solid #94a3b8;
+  border-radius: 8px;
+  background: #fff;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* Four-column grid */
+.grid4 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+/* Skills */
+.skillsRow {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+.skillChip {
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: #dbeafe;
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 800;
+}
+.addSkill {
+  width: 100%;
+  height: 28px;
+  border: 1px dashed #bcccdc;
+  border-radius: 999px;
+  background: #fff;
+  color: #334155;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Footer actions */
+.footerActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+.cancelBtn {
+  padding: 13px 25px;
+  border: 1px solid #64748b;
+  border-radius: 10px;
+  background: #fff;
+  color: #475569;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.saveBtn {
+  padding: 13px 25px;
+  border: 1px solid #2563eb;
+  border-radius: 10px;
+  background: #2563eb;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}

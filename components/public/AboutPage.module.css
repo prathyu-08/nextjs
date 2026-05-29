@@ -1,0 +1,197 @@
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  padding: 100px 0;
+  color: #fff;
+}
+.heroInner {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+}
+.heroTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  margin: 0 0 18px;
+}
+.heroLead {
+  font-size: 18px;
+  opacity: 0.9;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Stats */
+.statsSection {
+  padding: 60px 0;
+  background: #f9fafb;
+}
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  text-align: center;
+}
+.statValue {
+  font-size: 48px;
+  font-weight: 800;
+  color: #2563eb;
+  margin-bottom: 8px;
+}
+.statLabel {
+  font-size: 16px;
+  color: #6b7280;
+}
+
+/* Mission */
+.missionGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.missionImg {
+  width: 100%;
+  border-radius: 16px;
+}
+.missionPlaceholder {
+  width: 100%;
+  height: 360px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #667eea22, #764ba222);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+}
+.missionTitle {
+  font-size: 36px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 18px;
+}
+.missionText {
+  font-size: 15px;
+  color: #4b5563;
+  margin-bottom: 14px;
+  line-height: 1.7;
+}
+.missionTextLast {
+  margin-bottom: 24px;
+}
+.missionList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.missionItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 15px;
+  color: #4b5563;
+}
+.missionCheck {
+  color: #22c55e;
+  font-size: 16px;
+}
+
+/* Team */
+.teamSection {
+  padding: 80px 0;
+  background: #f9fafb;
+}
+.teamHead {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 48px;
+}
+.teamTitle {
+  font-size: 36px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 10px;
+}
+.teamSubtitle {
+  font-size: 16px;
+  color: #6b7280;
+  margin: 0;
+}
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+.teamMember {
+  text-align: center;
+}
+.teamAvatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 20px;
+  background: #e0e7ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+}
+.teamName {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 4px;
+}
+.teamRole {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* CTA */
+.cta {
+  background: linear-gradient(135deg, #eff6ff, #f0fdf4);
+  border-radius: 20px;
+  border: 1px solid #e5e7eb;
+  padding: 60px;
+  text-align: center;
+}
+.ctaTitle {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 12px;
+}
+.ctaText {
+  font-size: 16px;
+  color: #6b7280;
+  margin-bottom: 28px;
+}
+.ctaBtns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+.ctaBtnPrimary {
+  padding: 14px 32px;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 15px;
+}
+.ctaBtnOutline {
+  padding: 14px 32px;
+  border: 2px solid #2563eb;
+  color: #2563eb;
+  background: transparent;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 15px;
+}

@@ -1,0 +1,179 @@
+/* ============================================================================
+   Candidate _shared helpers — used by Shell, Card, Input, Sel, TemplatePanel,
+   TemplateButton, TemplateField, TextBox, SelectBox, TemplateGrid
+   ============================================================================ */
+
+/* Shell layout */
+.shell {
+  background: #f8f9fa;
+  min-height: 100vh;
+  padding: 40px 0 60px;
+}
+.shellInner {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+}
+.shellMain {
+  flex: 1;
+  min-width: 0;
+}
+.shellHeader {
+  margin-bottom: 24px;
+}
+.shellTitle {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 4px;
+}
+.shellSubtitle {
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Card primitives */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.cardHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.cardHeadTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+}
+
+/* Field primitives */
+.fieldWrap {
+  /* generic wrapper around label + control */
+}
+.fieldLabel {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 6px;
+}
+.fieldInput {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 13px;
+  box-sizing: border-box;
+  outline: none;
+}
+.fieldSelect {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 13px;
+  box-sizing: border-box;
+  outline: none;
+  background: #fff;
+}
+
+/* Template panel (Download CV) */
+.templatePanel {
+  background: #fff;
+  border: 1px solid #e6ebef;
+  border-radius: 4px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+}
+.templatePanelHead {
+  padding: 17px 22px;
+  border-bottom: 1px solid #eef2f5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  background: #fcfdff;
+}
+.templatePanelTitle {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #222;
+}
+.templatePanelNote {
+  margin: 5px 0 0;
+  font-size: 13px;
+  color: #6b7280;
+}
+.templatePanelBody {
+  padding: 22px;
+}
+
+/* Template button */
+.templateBtn {
+  padding: 10px 18px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.templateBtnPrimary {
+  background: #18b870;
+  color: #fff;
+  border: 1px solid #18b870;
+}
+.templateBtnBlue {
+  background: #12a8c7;
+  color: #fff;
+  border: 1px solid #12a8c7;
+}
+.templateBtnGhost {
+  background: #fff;
+  color: #3f4b57;
+  border: 1px solid #dce3e8;
+}
+.templateBtnDanger {
+  background: #fff;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+/* Template field/text/select */
+.templateField {
+  display: block;
+}
+.templateFieldLabel {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #35404a;
+  margin-bottom: 8px;
+}
+.templateInput {
+  width: 100%;
+  height: 42px;
+  padding: 8px 12px;
+  border: 1px solid #dfe7ee;
+  border-radius: 3px;
+  color: #475569;
+  font-size: 13px;
+  box-sizing: border-box;
+  outline: none;
+  background: #fff;
+}
+.templateGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+  margin-bottom: 18px;
+}

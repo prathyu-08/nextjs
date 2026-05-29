@@ -1,0 +1,153 @@
+/* ── Shell ─────────────────────────────────────────────────── */
+.footer {
+  background: #111827;
+  color: #fff;
+}
+.inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 64px 24px 40px;
+}
+.topGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 48px;
+}
+@media (max-width: 1024px) {
+  .topGrid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .topGrid { grid-template-columns: 1fr; }
+}
+
+/* ── Brand block ───────────────────────────────────────────── */
+.brandRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.logoIcon {
+  position: relative;
+  width: 40px;
+  height: 36px;
+}
+.logoShape {
+  position: absolute;
+  bottom: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  transform: rotate(45deg);
+}
+.logoShape1 {
+  left: 0;
+  background: #fde047;
+}
+.logoShape2 {
+  left: 8px;
+  background: #4ade80;
+  opacity: 0.9;
+  transform: rotate(45deg) translate(2px, -2px);
+}
+.logoShape3 {
+  left: 16px;
+  background: #06b6d4;
+  opacity: 0.9;
+  transform: rotate(45deg) translate(4px, -4px);
+}
+.brandName {
+  font-weight: 800;
+  font-size: 16px;
+  color: #22d3ee;
+  font-family: Georgia, serif;
+}
+.brandTagline {
+  font-size: 9px;
+  color: #6b7280;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.brandText {
+  color: #9ca3af;
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 280px;
+  margin-bottom: 20px;
+}
+.social {
+  display: flex;
+  gap: 10px;
+}
+.socialIcon {
+  width: 36px;
+  height: 36px;
+  background: #1f2937;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* ── Link columns ──────────────────────────────────────────── */
+.colTitle {
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.colList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.colItem {
+  margin-bottom: 12px;
+}
+.colLink {
+  color: #9ca3af;
+  font-size: 14px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.colDot {
+  width: 4px;
+  height: 4px;
+  background: #374151;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* ── Bottom bar ────────────────────────────────────────────── */
+.bottom {
+  border-top: 1px solid #1f2937;
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.copyright {
+  color: #6b7280;
+  font-size: 14px;
+  margin: 0;
+}
+.legal {
+  display: flex;
+  gap: 24px;
+}
+.legalLink {
+  color: #6b7280;
+  font-size: 14px;
+  text-decoration: none;
+}

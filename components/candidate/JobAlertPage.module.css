@@ -1,0 +1,140 @@
+/* ============================================================================
+   JobAlertPage — Alert creation form + existing alert list
+   ============================================================================ */
+
+/* Create form */
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+.formActions {
+  grid-column: span 2;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+.cancelBtn {
+  padding: 11px 24px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  color: #374151;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.createBtn {
+  padding: 11px 28px;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Alerts list */
+.sectionHeading {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 16px;
+}
+.alertRow {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  padding: 20px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.alertIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.alertIconActive {
+  background: #dbeafe;
+  color: #2563eb;
+}
+.alertIconPaused {
+  background: #f3f4f6;
+  color: #9ca3af;
+}
+.alertBody {
+  flex: 1;
+}
+.alertTopRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 6px;
+}
+.alertTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+.statusBadge {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+.statusActive {
+  background: #dcfce7;
+  color: #166534;
+}
+.statusPaused {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-size: 13px;
+  color: #6b7280;
+}
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.metaIcon {
+  color: #2563eb;
+}
+.alertActions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.iconBtn {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.iconBtnEdit {
+  border: 1px solid #e5e7eb;
+  color: #6b7280;
+}
+.iconBtnDelete {
+  border: 1px solid #fecaca;
+  color: #dc2626;
+}
+.iconBtnInner {
+  font-size: 12px;
+}

@@ -1,0 +1,195 @@
+/* ============================================================================
+   MyMessagesPage — Two-column messaging UI with conversation list + chat
+   ============================================================================ */
+
+.shell {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  min-height: 600px;
+}
+
+/* Conversation list */
+.convList {
+  border-right: 1px solid #e5e7eb;
+}
+.searchBar {
+  padding: 16px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.searchIcon {
+  color: #9ca3af;
+}
+.searchInput {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 14px;
+  flex: 1;
+}
+
+.convItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-bottom: 1px solid #f3f4f6;
+  cursor: pointer;
+  background: transparent;
+}
+.convItemActive {
+  background: #eff6ff;
+}
+.convLogo {
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.convBody {
+  flex: 1;
+  min-width: 0;
+}
+.convHead {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3px;
+}
+.convName {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+}
+.convTime {
+  font-size: 11px;
+  color: #9ca3af;
+}
+.convSubject {
+  font-size: 12px;
+  color: #4b5563;
+  margin-bottom: 2px;
+}
+.convPreview {
+  font-size: 11px;
+  color: #9ca3af;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.unreadBadge {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #2563eb;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Chat area */
+.chatPane {
+  display: flex;
+  flex-direction: column;
+}
+.chatHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+.chatAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+.chatName {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+}
+.chatSubject {
+  font-size: 12px;
+  color: #6b7280;
+}
+.messages {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.msgRow {
+  display: flex;
+}
+.msgRowMe {
+  justify-content: flex-end;
+}
+.msgRowCompany {
+  justify-content: flex-start;
+}
+.msgWrap {
+  max-width: 70%;
+}
+.msgBubble {
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+.msgBubbleMe {
+  background: #2563eb;
+  color: #fff;
+}
+.msgBubbleCompany {
+  background: #f3f4f6;
+  color: #1f2937;
+}
+.msgTime {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-top: 4px;
+  display: block;
+}
+.msgTimeMe {
+  text-align: right;
+}
+.msgTimeCompany {
+  text-align: left;
+}
+.composer {
+  padding: 16px;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  gap: 12px;
+}
+.composerInput {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  resize: none;
+  outline: none;
+}
+.sendBtn {
+  padding: 12px 20px;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  align-self: flex-end;
+}

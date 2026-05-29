@@ -3,6 +3,7 @@ import { useRouter } from 'next/navigation';
 import { useState, useEffect } from "react";
 import { jobApi } from "../../../../lib/api";
 import EmployerSidebar from "../../../../components/layout/sidebars/EmployerSidebar";
+import styles from "./page.module.css";
 
 const fld = (label, key, type = "text", placeholder = "", required = false) => ({ label, key, type, placeholder, required });
 const sel = (label, key, opts) => ({ label, key, type: "select", opts });
@@ -82,44 +83,44 @@ export default function PostJobPage() {
   };
 
   return (
-    <section style={{ background: "#f7f9fc", minHeight: "100vh" }}>
-      <div style={{ background: "linear-gradient(135deg,#1d4ed8,#1e3a8a)", padding: "32px 0" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
+    <section className={styles.page}>
+      <div className={styles.hero}>
+        <div className={styles.heroInner}>
           <div>
-            <div style={{ fontSize: 13, color: "rgba(255,255,255,0.6)", marginBottom: 4 }}>Northwind Commerce</div>
-            <h2 style={{ fontSize: 26, fontWeight: 800, color: "#fff", margin: "0 0 6px" }}>Create a new opportunity</h2>
-            <p style={{ color: "rgba(255,255,255,0.75)", margin: 0, fontSize: 14 }}>Share role details so the right candidates can find you faster.</p>
+            <div className={styles.heroEyebrow}>Northwind Commerce</div>
+            <h2 className={styles.heroTitle}>Create a new opportunity</h2>
+            <p className={styles.heroSubtitle}>Share role details so the right candidates can find you faster.</p>
           </div>
-          <button onClick={() => router.push("/employer/dashboard")} style={{ padding: "10px 20px", border: "2px solid rgba(255,255,255,0.5)", color: "#fff", background: "transparent", borderRadius: 10, cursor: "pointer", fontSize: 14, fontWeight: 600 }}>← Back to Dashboard</button>
+          <button onClick={() => router.push("/employer/dashboard")} className={styles.heroBackBtn}>← Back to Dashboard</button>
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} style={{ maxWidth: 1320, margin: "32px auto", padding: "0 24px", display: "flex", gap: 24, alignItems: "flex-start" }}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <EmployerSidebar currentPath="/post-job" />
-        <div style={{ flex: 1 }}>
-          <div style={{ background: "#fff", borderRadius: 16, border: "1px solid #e5e7eb", padding: 32 }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 28, paddingBottom: 20, borderBottom: "1px solid #e5e7eb" }}>
+        <div className={styles.main}>
+          <div className={styles.card}>
+            <div className={styles.cardHeader}>
               <div>
-                <h3 style={{ fontSize: 22, fontWeight: 700, color: "#1f2937", margin: "0 0 4px" }}>Job overview</h3>
-                <p style={{ fontSize: 13, color: "#9ca3af", margin: 0 }}>Fields marked * are required</p>
+                <h3 className={styles.cardTitle}>Job overview</h3>
+                <p className={styles.cardSub}>Fields marked * are required</p>
               </div>
             </div>
 
             {sections.map((sec, si) => (
-              <div key={si} style={{ marginBottom: 28 }}>
-                <h4 style={{ fontSize: 16, fontWeight: 700, color: "#374151", marginBottom: 16, paddingBottom: 8, borderBottom: "1px solid #f3f4f6" }}>{sec.title}</h4>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20 }}>
+              <div key={si} className={styles.section}>
+                <h4 className={styles.sectionTitle}>{sec.title}</h4>
+                <div className={styles.fieldGrid3}>
                   {sec.fields.map((f, fi) => (
                     <div key={fi}>
-                      <label style={{ display: "block", fontSize: 13, fontWeight: 500, color: "#374151", marginBottom: 6 }}>{f.label}</label>
+                      <label className={styles.fieldLabel}>{f.label}</label>
                       {f.type === "select" ? (
-                        <select value={form[f.key]} onChange={(e) => handleChange(f.key, e.target.value)} style={{ width: "100%", padding: "11px 14px", border: "1px solid #e5e7eb", borderRadius: 10, fontSize: 13, boxSizing: "border-box", outline: "none", background: "#fff" }}>
+                        <select value={form[f.key]} onChange={(e) => handleChange(f.key, e.target.value)} className={styles.select}>
                           {f.opts.map((o, i) => (
                             <option key={i} value={o}>{o}</option>
                           ))}
                         </select>
                       ) : (
-                        <input value={form[f.key]} onChange={(e) => handleChange(f.key, e.target.value)} type={f.type} placeholder={f.placeholder} style={{ width: "100%", padding: "11px 14px", border: "1px solid #e5e7eb", borderRadius: 10, fontSize: 13, boxSizing: "border-box", outline: "none" }} />
+                        <input value={form[f.key]} onChange={(e) => handleChange(f.key, e.target.value)} type={f.type} placeholder={f.placeholder} className={styles.input} />
                       )}
                     </div>
                   ))}
@@ -127,47 +128,47 @@ export default function PostJobPage() {
               </div>
             ))}
 
-            <h4 style={{ fontSize: 16, fontWeight: 700, color: "#374151", marginBottom: 16, paddingBottom: 8, borderBottom: "1px solid #f3f4f6" }}>Role description</h4>
-            <div style={{ marginBottom: 20 }}>
-              <label style={{ display: "block", fontSize: 13, fontWeight: 500, color: "#374151", marginBottom: 6 }}>Summary *</label>
-              <textarea value={form.summary} onChange={(e) => handleChange('summary', e.target.value)} placeholder="Describe the mission for this role..." rows={4} style={{ width: "100%", padding: "11px 14px", border: "1px solid #e5e7eb", borderRadius: 10, fontSize: 13, boxSizing: "border-box", outline: "none", resize: "vertical" }} />
+            <h4 className={styles.sectionTitle}>Role description</h4>
+            <div className={styles.summaryBlock}>
+              <label className={styles.fieldLabel}>Summary *</label>
+              <textarea value={form.summary} onChange={(e) => handleChange('summary', e.target.value)} placeholder="Describe the mission for this role..." rows={4} className={styles.textarea} />
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginBottom: 28 }}>
+            <div className={styles.fieldGrid2}>
               <div>
-                <label style={{ display: "block", fontSize: 13, fontWeight: 500, color: "#374151", marginBottom: 6 }}>Responsibilities</label>
-                <textarea value={form.responsibilities} onChange={(e) => handleChange('responsibilities', e.target.value)} placeholder="Use bullet points or short sentences" rows={4} style={{ width: "100%", padding: "11px 14px", border: "1px solid #e5e7eb", borderRadius: 10, fontSize: 13, boxSizing: "border-box", outline: "none", resize: "vertical" }} />
+                <label className={styles.fieldLabel}>Responsibilities</label>
+                <textarea value={form.responsibilities} onChange={(e) => handleChange('responsibilities', e.target.value)} placeholder="Use bullet points or short sentences" rows={4} className={styles.textarea} />
               </div>
               <div>
-                <label style={{ display: "block", fontSize: 13, fontWeight: 500, color: "#374151", marginBottom: 6 }}>Skills</label>
-                <input value={form.skills} onChange={(e) => handleChange('skills', e.target.value)} placeholder="e.g. React, TypeScript, UX" style={{ width: "100%", padding: "11px 14px", border: "1px solid #e5e7eb", borderRadius: 10, fontSize: 13, boxSizing: "border-box", outline: "none" }} />
+                <label className={styles.fieldLabel}>Skills</label>
+                <input value={form.skills} onChange={(e) => handleChange('skills', e.target.value)} placeholder="e.g. React, TypeScript, UX" className={styles.input} />
               </div>
             </div>
 
-            <h4 style={{ fontSize: 16, fontWeight: 700, color: "#374151", marginBottom: 16, paddingBottom: 8, borderBottom: "1px solid #f3f4f6" }}>Publishing</h4>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginBottom: 20 }}>
+            <h4 className={styles.sectionTitle}>Publishing</h4>
+            <div className={styles.fieldGrid2Tight}>
               {[
                 ["Application email", "application_email", "talent@northwind.com"],
                 ["External apply link", "external_apply_link", "https://company.com/careers"],
               ].map(([label, key, placeholder], i) => (
                 <div key={i}>
-                  <label style={{ display: "block", fontSize: 13, fontWeight: 500, color: "#374151", marginBottom: 6 }}>{label}</label>
-                  <input value={form[key]} onChange={(e) => handleChange(key, e.target.value)} placeholder={placeholder} style={{ width: "100%", padding: "11px 14px", border: "1px solid #e5e7eb", borderRadius: 10, fontSize: 13, boxSizing: "border-box", outline: "none" }} />
+                  <label className={styles.fieldLabel}>{label}</label>
+                  <input value={form[key]} onChange={(e) => handleChange(key, e.target.value)} placeholder={placeholder} className={styles.input} />
                 </div>
               ))}
             </div>
-            <label style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 14, color: "#374151", marginBottom: 24, cursor: "pointer" }}>
-              <input type="checkbox" checked={form.featured} onChange={(e) => handleChange('featured', e.target.checked)} style={{ width: 16, height: 16, accentColor: "#2563eb" }} />
+            <label className={styles.featuredRow}>
+              <input type="checkbox" checked={form.featured} onChange={(e) => handleChange('featured', e.target.checked)} className={styles.featuredCheckbox} />
               <span>Feature this job on the portal</span>
             </label>
 
             {status && (
-              <div style={{ marginBottom: 20, color: status.type === 'success' ? '#166534' : '#b91c1c', background: status.type === 'success' ? '#dcfce7' : '#fee2e2', padding: 12, borderRadius: 10 }}>
+              <div className={`${styles.status} ${status.type === 'success' ? styles.statusSuccess : styles.statusError}`}>
                 {status.message}
               </div>
             )}
-            <div style={{ display: "flex", justifyContent: "flex-end", gap: 12, paddingTop: 20, borderTop: "1px solid #e5e7eb" }}>
-              <button type="button" onClick={() => router.push('/employer/manage-jobs')} style={{ padding: "12px 28px", border: "1px solid #e5e7eb", background: "#f9fafb", color: "#374151", borderRadius: 10, fontWeight: 600, cursor: "pointer", fontSize: 14 }}>Cancel</button>
-              <button type="submit" disabled={sending} style={{ padding: "12px 28px", background: "#22c55e", color: "#fff", border: "none", borderRadius: 10, fontWeight: 600, cursor: sending ? 'not-allowed' : 'pointer', fontSize: 14, boxShadow: "0 4px 12px rgba(34,197,94,.3)" }}>
+            <div className={styles.footer}>
+              <button type="button" onClick={() => router.push('/employer/manage-jobs')} className={styles.cancelBtn}>Cancel</button>
+              <button type="submit" disabled={sending} className={styles.publishBtn}>
                 {sending ? 'Publishing…' : 'Publish Job'}
               </button>
             </div>

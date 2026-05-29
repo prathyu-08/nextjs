@@ -2,6 +2,7 @@
 import { useRouter } from 'next/navigation';
 import { useState } from "react";
 import { Shell, IMG } from "./_shared";
+import styles from "./MyApplicationsPage.module.css";
 
 export default function MyApplicationsPage() {
   const router = useRouter();
@@ -18,49 +19,54 @@ export default function MyApplicationsPage() {
   return (
     <Shell path="/candidate/my-applications" title="My Applications" subtitle="Track all your job applications in one place">
       {/* Stats */}
-      <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:16, marginBottom:24 }}>
+      <div className={styles.statsGrid}>
         {[["fa-paper-plane","Total Applied",apps.length,"#e0e7ff","#4f46e5"],["fa-clock","Pending",1,"#ffedd5","#ea580c"],["fa-comments","Interviews",1,"#dbeafe","#2563eb"],["fa-check-circle","Accepted",1,"#dcfce7","#16a34a"]].map(([icon,label,val,bg,color],i) => (
-          <div key={i} style={{ background:"#fff", borderRadius:12, border:"1px solid #e5e7eb", padding:20, display:"flex", gap:14, alignItems:"center" }}>
-            <div style={{ width:48, height:48, borderRadius:10, background:bg, display:"flex", alignItems:"center", justifyContent:"center", color, fontSize:20 }}><i className={`fa-solid ${icon}`} /></div>
-            <div><div style={{ fontSize:22, fontWeight:700, color:"#1f2937" }}>{val}</div><div style={{ fontSize:12, color:"#6b7280" }}>{label}</div></div>
+          <div key={i} className={styles.statCard}>
+            <div className={styles.statIcon} style={{ background:bg, color }}><i className={`fa-solid ${icon}`} /></div>
+            <div>
+              <div className={styles.statValue}>{val}</div>
+              <div className={styles.statLabel}>{label}</div>
+            </div>
           </div>
         ))}
       </div>
 
       {/* Filter tabs */}
-      <div style={{ display:"flex", gap:8, marginBottom:20, flexWrap:"wrap" }}>
-        {tabs.map(([key,label,count]) => (
-          <button key={key} onClick={() => setActiveTab(key)}
-            style={{ padding:"8px 16px", background:activeTab===key?"#2563eb":"#fff", border:"1px solid", borderColor:activeTab===key?"#2563eb":"#e5e7eb", borderRadius:8, fontSize:13, fontWeight:500, color:activeTab===key?"#fff":"#6b7280", cursor:"pointer" }}>
-            {label} <span style={{ marginLeft:4, padding:"1px 6px", background: activeTab===key?"rgba(255,255,255,.2)":"#f3f4f6", borderRadius:10, fontSize:11 }}>{count}</span>
-          </button>
-        ))}
+      <div className={styles.tabsRow}>
+        {tabs.map(([key,label,count]) => {
+          const isActive = activeTab === key;
+          return (
+            <button key={key} onClick={() => setActiveTab(key)} className={`${styles.tab} ${isActive ? styles.tabActive : ""}`}>
+              {label} <span className={`${styles.tabCount} ${isActive ? styles.tabCountActive : ""}`}>{count}</span>
+            </button>
+          );
+        })}
       </div>
 
       {shown.map((app,i) => {
         const [bg,color] = statusStyle[app.status];
         return (
-          <div key={i} style={{ background:"#fff", borderRadius:12, border:"1px solid #e5e7eb", padding:20, marginBottom:14 }}>
-            <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", marginBottom:14 }}>
-              <div style={{ display:"flex", gap:14, alignItems:"center" }}>
-                <img src={app.logo} alt={app.company} style={{ width:48, height:48, borderRadius:10, objectFit:"cover" }} />
+          <div key={i} className={styles.appCard}>
+            <div className={styles.appHead}>
+              <div className={styles.appCompany}>
+                <img src={app.logo} alt={app.company} className={styles.appLogo} />
                 <div>
-                  <h3 style={{ fontSize:16, fontWeight:600, color:"#1f2937", margin:"0 0 2px" }}>{app.title}</h3>
-                  <div style={{ fontSize:13, color:"#6b7280" }}>{app.company}</div>
+                  <h3 className={styles.appTitle}>{app.title}</h3>
+                  <div className={styles.appCompanyName}>{app.company}</div>
                 </div>
               </div>
-              <span style={{ padding:"4px 12px", borderRadius:20, fontSize:12, fontWeight:600, background:bg, color, textTransform:"capitalize" }}>{app.status}</span>
+              <span className={styles.statusBadge} style={{ background:bg, color }}>{app.status}</span>
             </div>
-            <div style={{ display:"flex", flexWrap:"wrap", gap:16, marginBottom:14 }}>
+            <div className={styles.metaRow}>
               {[["fa-map-marker",app.location],["fa-briefcase",app.type],["fa-money-bill",app.salary],["fa-calendar",`Applied: ${app.applied}`]].map(([icon,text],j) => (
-                <span key={j} style={{ display:"flex", alignItems:"center", gap:6, fontSize:13, color:"#6b7280" }}>
-                  <i className={`fa-solid ${icon}`} style={{ color:"#2563eb" }} />{text}
+                <span key={j} className={styles.metaItem}>
+                  <i className={`fa-solid ${icon} ${styles.metaIcon}`} />{text}
                 </span>
               ))}
             </div>
-            <div style={{ display:"flex", gap:8 }}>
-              <button onClick={() => router.push("/jobs")} style={{ padding:"8px 16px", border:"1px solid #2563eb", color:"#2563eb", background:"transparent", borderRadius:8, cursor:"pointer", fontSize:13, fontWeight:500 }}>View Job</button>
-              <button style={{ padding:"8px 16px", border:"1px solid #e5e7eb", color:"#374151", background:"transparent", borderRadius:8, cursor:"pointer", fontSize:13 }}>Withdraw</button>
+            <div className={styles.actions}>
+              <button onClick={() => router.push("/jobs")} className={styles.viewBtn}>View Job</button>
+              <button className={styles.withdrawBtn}>Withdraw</button>
             </div>
           </div>
         );
