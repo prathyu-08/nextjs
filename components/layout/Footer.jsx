@@ -3,8 +3,8 @@ import styles from './Footer.module.css';
 
 const footerCols = [
   { title: 'For Job Seekers', links: [
-    { label: 'Browse Jobs', path: '/jobs-list' },
-    { label: 'Job Categories', path: '/jobs-list' },
+    { label: 'Browse Jobs', path: '/jobs' },
+    { label: 'Job Categories', path: '/jobs' },
     { label: 'Resume Builder', path: '/candidate/build-resume' },
   ]},
   { title: 'For Employers', links: [

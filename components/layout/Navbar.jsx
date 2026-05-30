@@ -6,9 +6,8 @@ import styles from './Navbar.module.css';
 
 const navItems = [
   { label: 'Home', path: '/' },
-  { label: 'Jobs', path: '/jobs-list', dropdown: [
-    { label: 'Jobs List View', path: '/jobs-list' },
-    { label: 'Job Single', path: '/jobs/job-single' },
+  { label: 'Jobs', path: '/jobs', dropdown: [
+    { label: 'Browse Jobs', path: '/jobs' },
   ]},
   { label: 'Pages', path: '/public/about', dropdown: [
     { label: 'About Us', path: '/public/about' },
