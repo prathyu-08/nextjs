@@ -202,9 +202,36 @@ export default function Page() {
 
 ## 4. Data layer (API)
 
+### Two-mode architecture
+
+The frontend never knows the FastAPI URL directly. It calls `/api/*` (same origin) and a catch-all Route Handler at `app/api/[...path]/route.js` forwards the request to FastAPI server-side. A single env var toggles between this **proxy mode** (production default) and **direct mode** (browser calls FastAPI directly — useful for debugging).
+
+```
+proxy mode (production)
+  Browser ─► /api/jobs ─► Next.js Route Handler ─► FastAPI
+                              │
+                              └── serverConfig.backendUrl (server-only env)
+
+direct mode (debug)
+  Browser ─► FastAPI URL                          (NEXT_PUBLIC_DIRECT_API_URL)
+```
+
+**Toggle in `.env.local`:**
+```
+NEXT_PUBLIC_API_MODE=proxy        # or 'direct'
+API_BACKEND_URL=http://localhost:8000     # used by proxy mode (server-only)
+NEXT_PUBLIC_DIRECT_API_URL=http://localhost:8000   # used by direct mode only
+```
+
+Switching modes is config-only — no code changes. `lib/api/client.js` reads `API_MODE` at module load and points axios's `baseURL` at the right target.
+
 ### Where to find it
 
-All HTTP calls live under `lib/api/`. One file per backend resource. Each file exports a single API object (e.g. `authApi`, `jobApi`).
+- `lib/server/config.js` — server-only secrets (FastAPI URL, future third-party keys). **Never import from a client component.**
+- `lib/config.js` — public config (mode toggle, public client IDs). Safe to ship to the browser.
+- `lib/api/client.js` — shared axios instance with the mode-aware base URL.
+- `lib/api/<resource>.js` — one file per backend resource, exporting an API object (e.g. `authApi`, `jobApi`). These do not change between modes.
+- `app/api/[...path]/route.js` — the proxy Route Handler that forwards everything under `/api/` to FastAPI in proxy mode.
 
 ### Adding a new endpoint
 
