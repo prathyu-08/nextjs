@@ -1,4 +1,5 @@
 import '../styles/globals.css';
+import { SessionProvider } from '../lib/session/SessionProvider';
 
 export const metadata = {
   title: {
@@ -28,7 +29,7 @@ export default function RootLayout({ children }) {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
       </head>
       <body style={{ fontFamily: "'Inter', system-ui, sans-serif", margin: 0 }}>
-        {children}
+        <SessionProvider>{children}</SessionProvider>
       </body>
     </html>
   );

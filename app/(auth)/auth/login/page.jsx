@@ -2,12 +2,14 @@
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from "react";
 import api from "../../../../lib/api";
+import { useSession } from "../../../../lib/session/SessionProvider";
 import styles from "./page.module.css";
 
 export const dynamic = 'force-dynamic';
 
 export default function LoginPage() {
   const router = useRouter();
+  const { login } = useSession();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -35,14 +37,20 @@ export default function LoginPage() {
 
     try {
       const response = await api.authApi.login(formData);
-      localStorage.setItem("token", response.id_token);
-      localStorage.setItem("refreshToken", response.refresh_token);
-      localStorage.setItem("user", JSON.stringify({
-        id: response.user_id,
-        email: response.email || formData.email,
-        role: response.role,
-        recruiter_id: response.recruiter_id,
-      }));
+      // In proxy mode the httpOnly cookies were already set by the /api proxy
+      // and id_token/refresh_token are stripped from `response`; we only seed
+      // the in-memory user. In direct mode login() also persists the tokens.
+      login({
+        token: response.id_token,
+        refreshToken: response.refresh_token,
+        user: {
+          id: response.user_id,
+          email: response.email || formData.email,
+          role: response.role,
+          recruiter_id: response.recruiter_id,
+        },
+        remember: formData.remember,
+      });
       if (response.role === "recruiter") {
         router.push("/employer/dashboard");
       } else {

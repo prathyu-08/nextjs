@@ -1,46 +1,41 @@
 import { NextResponse } from 'next/server';
 import { serverConfig } from '../../../lib/server/config';
+import {
+  writeSessionCookies,
+  readSessionToken,
+} from '../../../lib/server/session';
 
-/**
- * Catch-all proxy that forwards every request under `/api/*` to the
- * FastAPI backend defined in `lib/server/config.js`.
- *
- *   Browser     →  GET /api/jobs/         (this handler)
- *   Next server →  GET ${backendUrl}/jobs/  (FastAPI)
- *
- * Active only when `API_MODE === 'proxy'`. In direct mode the frontend
- * calls FastAPI directly and never hits this handler.
- *
- * What this handler does:
- *   - Strips the `/api` prefix from the path
- *   - Forwards method, query string, headers, and body verbatim
- *   - Drops headers that fetch/Node must recompute (host, content-length)
- *   - Returns the upstream response with its original status/headers
- *   - Returns 502 if the upstream is unreachable
- *
- * What this handler does NOT yet do (track in ARCHITECTURE.md known gaps):
- *   - Move auth tokens to httpOnly cookies (still passed via Authorization
- *     header from the browser; httpOnly cookie support is a follow-up)
- *   - Inject third-party credentials from server-only env vars
- *   - Rate limiting / request validation
- */
+// Catch-all proxy: forwards everything under /api/* to the FastAPI backend
+// (proxy mode only; direct mode skips this entirely). It strips the /api
+// prefix, forwards method/query/headers/body, and returns the upstream
+// response, or 502 if the backend is down.
+//
+// It also handles the session: a session cookie is injected as a Bearer header
+// on the way out, and auth responses get their tokens moved into httpOnly
+// cookies and stripped from the body so the token never reaches JS.
 
-// Force this route to run on the Node.js runtime (default) and never be
-// statically optimized — every request is dynamic by definition.
 export const dynamic = 'force-dynamic';
 
 const STREAMING_METHODS_WITH_BODY = ['POST', 'PUT', 'PATCH', 'DELETE'];
+const TOKEN_FIELDS = ['id_token', 'refresh_token'];
 
 async function proxy(req) {
-  // Strip the /api prefix so the path matches FastAPI's routes 1:1.
   const path = req.nextUrl.pathname.replace(/^\/api/, '');
   const target = `${serverConfig.backendUrl}${path}${req.nextUrl.search}`;
 
-  // Clone incoming headers and remove ones fetch must recompute.
+  const isAuthMutation = req.method === 'POST' && path.startsWith('/auth/');
+
   const headers = new Headers(req.headers);
   headers.delete('host');
   headers.delete('content-length');
   headers.delete('connection');
+
+  // Frontend never holds the token; pull it from the cookie. An explicit
+  // Authorization header (if any) still wins.
+  const cookieToken = readSessionToken(req);
+  if (cookieToken && !headers.has('authorization')) {
+    headers.set('authorization', `Bearer ${cookieToken}`);
+  }
 
   const init = {
     method: req.method,
@@ -48,12 +43,20 @@ async function proxy(req) {
     redirect: 'manual',
   };
 
+  let remember = false;
   if (STREAMING_METHODS_WITH_BODY.includes(req.method)) {
-    // arrayBuffer() handles both JSON and multipart/form-data correctly.
-    // For very large uploads, swap to req.body (ReadableStream) — but that
-    // requires `duplex: 'half'` and has Node-version caveats.
+    // arrayBuffer covers JSON and multipart bodies alike.
     const body = await req.arrayBuffer();
-    if (body.byteLength > 0) init.body = body;
+    if (body.byteLength > 0) {
+      init.body = body;
+      if (isAuthMutation) {
+        try {
+          remember = !!JSON.parse(new TextDecoder().decode(body)).remember;
+        } catch {
+          // non-JSON body (form-data); remember stays false
+        }
+      }
+    }
   }
 
   let upstream;
@@ -66,14 +69,40 @@ async function proxy(req) {
     );
   }
 
-  // Drop transport-layer headers that the runtime will set itself.
   const responseHeaders = new Headers(upstream.headers);
   responseHeaders.delete('transfer-encoding');
   responseHeaders.delete('content-encoding');
   responseHeaders.delete('content-length');
 
-  // Buffer the response so we can return a plain NextResponse without
-  // worrying about ReadableStream edge cases. Fine for API payloads.
+  // On auth responses, move the tokens into httpOnly cookies and drop them from
+  // the body. Everything else passes through untouched.
+  if (isAuthMutation && upstream.ok) {
+    const contentType = upstream.headers.get('content-type') || '';
+    if (contentType.includes('application/json')) {
+      let payload;
+      try {
+        payload = JSON.parse(await upstream.text());
+      } catch {
+        payload = null;
+      }
+      if (payload && payload.id_token) {
+        const safeBody = { ...payload };
+        TOKEN_FIELDS.forEach((field) => delete safeBody[field]);
+        const res = NextResponse.json(safeBody, {
+          status: upstream.status,
+          headers: responseHeaders,
+        });
+        writeSessionCookies(res, payload, { remember });
+        return res;
+      }
+      // auth response without tokens (signup/confirm) — pass through
+      return NextResponse.json(payload ?? {}, {
+        status: upstream.status,
+        headers: responseHeaders,
+      });
+    }
+  }
+
   const responseBody = await upstream.arrayBuffer();
 
   return new NextResponse(responseBody, {
